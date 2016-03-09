@@ -1,0 +1,25 @@
+{
+  "name": "navvy",
+  "version": "0.0.1",
+  "description": "Navvy App for MazdaConnect",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MazdaConnect",
+    "MazdaPH",
+    "Navvy"
+  ],
+  "author": "WunderkindTech Solutions",
+  "license": "ISC",
+  "dependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-if": "^2.0.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.3",
+    "merge-stream": "^1.0.0",
+    "yargs": "^4.2.0"
+  }
+}
