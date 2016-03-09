@@ -17,7 +17,7 @@ function NavvyCtrl (uiaId, parentDiv, ctrlId) {
 
   this._VENDOR = ('opera' in window) ? '0' : 'webkit';
 
-  this._PATH = 'apps/emnavi/controls/Compass/resources/';
+  this._PATH = 'apps/emnavi/controls/Compass/resources/system/';
 
   this.init();
 };
@@ -26,13 +26,13 @@ NavvyCtrl.prototype._loadCSS = function () {
   var mainCSS = document.createElement('link');
   mainCSS.type = 'text/css';
   mainCSS.rel = 'stylesheet';
-  mainCSS.href = this._PATH + 'system/css/NavvyCtrl.css';
+  mainCSS.href = this._PATH + 'css/NavvyCtrl.css';
   document.body.appendChild(mainCSS);
 
   var ltCSS = document.createElement('link');
   ltCSS.type = 'text/css';
   ltCSS.rel = 'stylesheet';
-  ltCSS.href = this._PATH + 'system/css/leaflet.css';
+  ltCSS.href = this._PATH + 'css/leaflet.css';
   document.body.appendChild(ltCSS);
 };
 
@@ -66,7 +66,7 @@ NavvyCtrl.prototype.init = function () {
 NavvyCtrl.prototype._loadMap = function (cb) {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src = this._PATH + 'system/js/leaflet.js';
+  script.src = this._PATH + 'js/leaflet.js';
   script.onload = function () {};
 
   var mq = document.createElement('script');
@@ -94,7 +94,7 @@ NavvyCtrl.prototype._createMap = function () {
 };
 
 NavvyCtrl.prototype._createPin = function () {
-  var imgSrc = 'system/images/arrow.png';
+  var imgSrc = 'images/arrow.png';
   return L.icon({
     iconUrl: this._PATH + imgSrc,
     iconSize: [30, 30]
@@ -110,6 +110,25 @@ NavvyCtrl.prototype._createMarker = function (lat, lng) {
     draggable: false,
     interval: 1200
   });
+};
+
+NavvyCtrl.prototype._updateMarker = function (lat, lng) {
+  if (!this._marker) {
+    t
+  } else {
+    var coords = L.latLng(lat, lng);
+    this._marker.setLatLng(coords);
+    this._map.panTo(coords, this._map.getZoom());
+  }
+};
+
+NavvyCtrl.prototype.showLocation = function (location) {
+  if (location.latlng != null) {
+    if (!this._marker) {
+      his._marker = this._createMarker(location.latlng.lat, location.latlng.lng);
+      this._marker.addTo(this._map);
+    } else this._updateMarker(location.latlng.lat, location.latlng.lng);
+  }
 };
 
 NavvyCtrl.prototype.handleControllerEvent = function () {};

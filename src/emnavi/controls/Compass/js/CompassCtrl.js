@@ -39,6 +39,12 @@ CompassCtrl.prototype.loadSystem = function () {
   }
 };
 
+CompassCtrl.prototype.setLocationData = function (location) {
+  if (!this.navvyDisplayed) return;
+
+  this.navvyCtrl.showLocation(location);
+};
+
 CompassCtrl.prototype.cleanUp = function () {
   if (!this.navvyDisplayed) return;
   this.navvyCtrl.cleanUp();
