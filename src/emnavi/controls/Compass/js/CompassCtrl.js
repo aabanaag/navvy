@@ -13,7 +13,8 @@ function CompassCtrl (uiaId, parentDiv, ctrlId, properties) {
   this.retryTimeout = 30 * 1000;
 
   this.properties = {
-    _navvyDir: 'apps/emnavi/controls/Compass/resources/system/js/NavvyCtrl.js'
+    _navvyDir: 'apps/emnavi/controls/Compass/resources/system/js/NavvyCtrl.js',
+    _networkTest: 'http://mazda-twitter-api.herokuapp.com/ping'
   };
 
   this.loadNavvy();
@@ -45,7 +46,7 @@ CompassCtrl.prototype.loadNavvy = function () {
 
     script.onload = function () {
       clearTimeout(startTimeout);
-      this.loadSystem();
+      this.checkConnectivity();
     }.bind(this);
 
     this.parentDiv.appendChild(script);
@@ -55,11 +56,13 @@ CompassCtrl.prototype.loadNavvy = function () {
 
 };
 
-CompassCtrl.prototype.loadSystem = function () {
+CompassCtrl.prototype.loadSystem = function (hasNoConnectivity) {
   if (typeof(NavvyCtrl) != 'undefined') {
     if (this.navvyDisplayed) this.parentDiv.removeChild(this.ctrlDiv);
 
-    this.navvyCtrl = new NavvyCtrl(this.uiaId, this.parentDiv, this.ctrlId);
+    this.navvyCtrl = new NavvyCtrl(this.uiaId, this.parentDiv, this.ctrlId, {
+      noConnectivity: hasNoConnectivity
+    });
 
     this.navvyInitialized = true;
   }
@@ -70,13 +73,41 @@ CompassCtrl.prototype.renderNoNavvy = function () {
 
    // Container element
   this.ctrlDiv = document.createElement('div');
-  this.ctrlDiv.className = 'CompassCtrl';
+  this.ctrlDiv.className = 'CompassCtrl CompassCtrlNoNavvy';
   this.parentDiv.appendChild(this.ctrlDiv);
 
   // create map
   this.ctrlLabel = document.createElement('label');
   this.ctrlDiv.appendChild(this.ctrlLabel);
   this.ctrlLabel.innerHTML = "Insert SD Card";
+};
+
+CompassCtrl.prototype.renderNoConnectivity = function () {
+  if (this.navvyInitialized) return;
+
+  this.ctrlDiv = document.createElement('div');
+  this.ctrlDiv.className = 'CompassCtrl CompassCtrlNoConnectivity';
+  this.parentDiv.appendChild(this.ctrlDiv);
+
+  this.ctrlLabel = document.createElement('div');
+  this.ctrlDiv.appendChild(this.ctrlLabel);
+  this.ctrlLabel.innerHTML = 'No Internet Connection';
+};
+
+CompassCtrl.prototype.checkConnectivity = function () {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", this.properties._networkTest, true);
+  try {
+    xhr.send();
+    xhr.onreadystatechange = function (res) {
+      if (res.currentTarget.readyState == 4 && res.currentTarget.status >= 200 && res.currentTarget.status < 304) {
+        //this.parentDiv.removeChild(this.ctrlDiv);
+        this.loadSystem(true);
+      } else this.loadSystem(false);
+    }.bind(this);
+  } catch (e) {
+    this._showNoConnection();
+  }
 };
 
 CompassCtrl.prototype.setLocationData = function (location) {

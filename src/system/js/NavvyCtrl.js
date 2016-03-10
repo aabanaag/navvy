@@ -1,4 +1,4 @@
-function NavvyCtrl (uiaId, parentDiv, ctrlId) {
+function NavvyCtrl (uiaId, parentDiv, ctrlId, properties) {
   this.id = ctrlId;
   this.parentDiv = parentDiv;
   this.uiaId = uiaId;
@@ -11,7 +11,12 @@ function NavvyCtrl (uiaId, parentDiv, ctrlId) {
       DEFAULT_ZOOM: 17,
       mapUrl: 'http://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=',
       key: '7sp7uN2HZY7IjMHMlaIwjhIHoGGPao4P'
-    }
+    },
+    networkTest: 'http://mazda-twitter-api.herokuapp.com/ping'
+  }
+
+  for (var i in properties) {
+    this.properties[i] = properties[i];
   }
 
   this._initialize = false;
@@ -57,7 +62,7 @@ NavvyCtrl.prototype.init = function () {
   this._loadMap(function () {
     this._createMap(function () {
       //this._checkLocation(this.currCoords.lat, this.currCoords.lng);
-      //this._showMarker(this.currCoords.lat, this.currCoords.lng);
+      this._showMarker(this.currCoords.lat, this.currCoords.lng);
     }.bind(this));
 
   }.bind(this));

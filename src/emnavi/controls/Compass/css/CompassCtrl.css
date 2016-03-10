@@ -4,7 +4,7 @@
   width: 800px;
   height: 480px;
   position: absolute;
-  background: url(../images/sdcard.png) 100% 0% no-repeat;
+  background: black;
   z-index: 0;
   overflow: hidden;
   font-size: 1.8em;
@@ -16,4 +16,12 @@
   text-align: center;
   padding: 350px 30px 30px 30px;
   text-shadow: #000 0 3px 3px;
+}
+
+.CompassCtrl .CompassCtrlNoNavvy {
+  background: url(../images/sdcard.png) 100% 0% no-repeat;
+}
+
+.CompassCtrl .CompassCtrlNoConnectivity {
+  background-color: rgba(62, 148, 218, 1);
 }
