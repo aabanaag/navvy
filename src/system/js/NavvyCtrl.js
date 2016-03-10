@@ -28,7 +28,9 @@ function NavvyCtrl (uiaId, parentDiv, ctrlId) {
 NavvyCtrl.prototype._registerEvents = function () {
   this.events = {
     home: this._home.bind(this),
-    search: this._search.bind(this)
+    search: this._search.bind(this),
+    geocode: this._searchLocation.bind(this),
+    close: this._closeButtonClicked.bind(this)
   };
 };
 
@@ -85,6 +87,10 @@ NavvyCtrl.prototype._createContainer = function () {
   this.ctrlMap = document.createElement('div');
   this.ctrlMap.id = 'NavvyCtrlMapContainer';
   this.ctrlDiv.appendChild(this.ctrlMap);
+
+  this.routeInstructions = document.createElement('div');
+  this.routeInstructions.id = 'navvyCtrlRouteInstructions';
+  this.ctrlDiv.appendChild(this.routeInstructions);
 };
 
 NavvyCtrl.prototype._createMenus = function () {
@@ -105,6 +111,38 @@ NavvyCtrl.prototype._createMenus = function () {
   this.ctrlDiv.appendChild(this.searchButton);
 };
 
+NavvyCtrl.prototype._createSearchControl = function () {
+  var searchContainer = document.createElement('div');
+  searchContainer.id = 'navvyCtrlSearchContainer';
+  searchContainer.className = 'navvyCtrlHidden';
+
+  this.closeButton = document.createElement('button');
+  this.closeButton.type = 'button';
+  this.closeButton.id = 'navvyCtrlSearchClose';
+  this.closeButton.addEventListener('click', this.events.close);
+
+  this.searchInput = document.createElement('input');
+  this.searchInput.type = 'text';
+  this.searchInput.id = 'navvyCtrlSearchInput';
+  this.searchInput.value = 'century city mall';
+  this.searchInput.placeholder = 'Search';
+
+  this.geocodeAddressButton = document.createElement('button');
+  this.geocodeAddressButton.type = 'button';
+  this.geocodeAddressButton.id = 'navvyCtrlSearchPlace';
+  this.geocodeAddressButton.addEventListener('click', this.events.geocode);
+
+  this.searchList = document.createElement('ul');
+  this.searchList.id = 'navvyCtrlSearchList';
+
+  searchContainer.appendChild(this.closeButton);
+  searchContainer.appendChild(this.searchInput);
+  searchContainer.appendChild(this.geocodeAddressButton);
+  searchContainer.appendChild(this.searchList);
+
+  this.ctrlDiv.appendChild(searchContainer);
+};
+
 NavvyCtrl.prototype.init = function () {
   if (this._initialize) return;
 
@@ -112,6 +150,7 @@ NavvyCtrl.prototype.init = function () {
   this._loadCSS();
   this._createContainer();
   this._createMenus();
+  this._createSearchControl();
 
   this._loadMap(function () {
     this._loadPlugins();
@@ -175,7 +214,7 @@ NavvyCtrl.prototype._updateMarker = function (lat, lng) {
     if (this._snappedToRoad) {
 
       var intersect = this._checkPolyIntersect({ lat: lat, lng: lng });
-      console.log(intersect);
+
       if (intersect) {
         var distance = this._getDistance(this.currCoords, { lat: lat, lng: lng });
         this.currCoords = {
@@ -201,16 +240,16 @@ NavvyCtrl.prototype._updateMarker = function (lat, lng) {
         this._marker._icon.style.transform = this._marker._icon.style.transform + 'rotate(' + this.bearingPoints[this.bearingIndex].ang + 'deg)';
         this._map.panTo(this.currCoords, this._map.getZoom());
       } else {
+        this._removeRouting();
         this.currCoords = {
-          lat: location.latitude,
-          lng: location.longitude
+          lat: lat,
+          lng: lng
         }
         this._marker.setLatLng(this.currCoords);
-        this._map.panTo(this.currCoords, this.map.getZoom());
+        this._map.panTo(this.currCoords, this._map.getZoom());
       }
-
     } else {
-      this._getPathBetweenPoints({ lat: lat, lng: lng}, function () {
+      this._getPathBetweenPoints({ lat: lat, lng: lng }, function (e) {
         var coords = L.latLng(this.currCoords.lat, this.currCoords.lng);
         this._marker.setLatLng(coords);
         this._map.panTo(coords, this._map.getZoom());
@@ -239,19 +278,51 @@ NavvyCtrl.prototype.showLocation = function (location) {
 };
 
 NavvyCtrl.prototype._searchLocation = function () {
-  //var address = this.searchInput.value + ' philippines';
-  var address = 'Century City Mall Philippines';
+  var address = this.searchInput.value + ' philippines';
   this.geocode.search(address);
 };
 
 NavvyCtrl.prototype._createSearchResults = function (matches) {
-  this._routeToDestination(matches[0]);
+  this.searchList.innerHTML = '';
+  for (var i=0; i < matches.length; i++) {
+    var area = matches[i];
+    var li = document.createElement('li');
+    li.innerText = area.adminArea6 + ' ' + area.adminArea5;
+    li.data = area;
+    li.addEventListener('click', function (e) {
+      var target = e.currentTarget;
+      var data = target.data;
+
+      this.searchList.innerHTML = '';
+      this.searchInput.value = '';
+
+      this._toggleSearchContainer(false);
+      this._routeToDestination(data);
+    }.bind(this));
+
+    var goToButton = document.createElement('button');
+    goToButton.className = 'navvyCtrlGoToDestination';
+    goToButton.data = area;
+    goToButton.addEventListener('click', function (e) {
+      var target = e.currentTarget;
+      var data = target.data;
+
+      this.searchList.innerHTML = '';
+      this.searchInput.value = '';
+
+      this._toggleSearchContainer(false);
+      this._routeToDestination(data);
+    }.bind(this));
+
+    li.appendChild(goToButton);
+    this.searchList.appendChild(li);
+  }
+  //this._routeToDestination(matches[0]);
 };
 
 NavvyCtrl.prototype._routeToDestination = function (data) {
   if (this.routingLayer && this.hasInstructions) {
-    this._map.removeLayer(this.routingLayer);
-    this.routingLayer = undefined;
+    this._removeRouting();
   }
 
   var dir = MQ.routing.directions();
@@ -293,6 +364,9 @@ NavvyCtrl.prototype._addRouteInstructions = function (data) {
     }
   };
 
+  var container = document.createElement('div');
+  container.className = 'navvyCtrlInstructions';
+
   var legs = data.route.legs,
     html = '',
     maneuvers,
@@ -307,6 +381,7 @@ NavvyCtrl.prototype._addRouteInstructions = function (data) {
     this.bearingPoints.push({ ang: bearing });
 
     for (i=0; i < maneuvers.length; i++) {
+      html += '<div><img src="' + maneuvers[i].iconUrl + '" />' + maneuvers[i].narrative + '</div>';
       if (maneuvers[i]) {
         var bearing = undefined;
         if (maneuvers[i+1]) bearing = this._getBearing(maneuvers[i].startPoint, maneuvers[i+1].startPoint);
@@ -319,6 +394,10 @@ NavvyCtrl.prototype._addRouteInstructions = function (data) {
     }
 
     this._setMapBearing(this.bearingPoints[0].ang);
+
+    container.innerHTML = html;
+    this.routeInstructions.appendChild(container);
+    //this._offsetCenter(this.currCoords, -100, 0);
 
     var lineString = data.route.shape.shapePoints;
     this.polyLineString = lineString.map(function (obj) {
@@ -358,16 +437,16 @@ NavvyCtrl.prototype._getDistance = function (coor1, coor2, unit) {
 };
 
 NavvyCtrl.prototype._checkPolyIntersect = function (location) {
-    var pt = turf.point([location.lng, location.lat]);
-    var buff = turf.buffer(this.lineString, 3, 'meters');
-    var intersection = turf.intersect(buff.features[0].geometry, pt);
+  var pt = turf.point([location.lng, location.lat]);
+  var buff = turf.buffer(this.lineString, 2.5, 'meters');
+  var intersection = turf.intersect(buff.features[0].geometry, pt);
 
-    return intersection;
+  return intersection;
 };
 
 NavvyCtrl.prototype._checkPointIntersect = function (pt1, pt2) {
   pt1 = turf.point([pt1.lng, pt1.lat]);
-  var buff = turf.buffer(pt1, 3, 'meters');
+  var buff = turf.buffer(pt1, 2.5, 'meters');
   pt2 = turf.point([pt2.lng, pt2.lat]);
   var intersection = turf.intersect(buff.features[0].geometry, pt2);
 
@@ -397,8 +476,8 @@ NavvyCtrl.prototype._getPathBetweenPoints = function (data, callback) {
     if (status == 200) {
       var response = JSON.parse(xhr.response);
       this.currCoords = {
-        lat: response.mapped_coordinate [0],
-        lng: response.mapped_coordinate [1]
+        lat: response.mapped_coordinate[0],
+        lng: response.mapped_coordinate[1]
       }
       callback(response);
     } else {
@@ -411,63 +490,86 @@ NavvyCtrl.prototype._getPathBetweenPoints = function (data, callback) {
   xhr.send();
 };
 
+NavvyCtrl.prototype._removeRouting = function () {
+  this._map.removeLayer(this.routingLayer);
+  this.routeInstructions.innerHTML = '';
+  this.polyLineString = this.bearingPoints = this.hasInstructions = this.routingLayer = undefined;
+};
+
 //event functions
 NavvyCtrl.prototype._geocodeSuccess = function (res) {
-  console.log('success: ', res.result.matches);
   this._createSearchResults(res.result.matches);
 };
 
 NavvyCtrl.prototype._home = function () {
-  framework.sendEventToMmui('Common', 'Global.IntentHome');
-  // var self = this;
-  //
-  // var xhr = new XMLHttpRequest();
-  // xhr.open('GET', 'file://localhost/home/abetmiclat/Documents/Projects/navvy-online/controls/Map/js/test-data.json', false);
-  // xhr.timeout = 30000;
-  // xhr.onload = function() {
-  //   var status = xhr.status;
-  //   if (status == 0) {
-  //     var response = JSON.parse(xhr.response);
-  //
-  //     function geolocate () {
-  //       var coordinate = response.shift();
-  //       if (!coordinate) return;
-  //
-  //       var data = {
-  //         latlng: {
-  //           lat: coordinate.lat,
-  //           lng: coordinate.lon
-  //         }
-  //       }
-  //
-  //       self.showLocation(data);
-  //
-  //       setTimeout(function () {
-  //         geolocate();
-  //       }, 1000);
-  //     }
-  //
-  //     geolocate();
-  //
-  //   } else {
-  //     console.log(status);
-  //   }
-  // }.bind(this);
-  // xhr.onerror = function() {
-  //   var status = xhr.status;
-  // }
-  // xhr.send();
+  //framework.sendEventToMmui('Common', 'Global.IntentHome');
+  var self = this;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'file://localhost/home/abetmiclat/Documents/Projects/navvy-online/controls/Map/js/test-data.json', false);
+  xhr.timeout = 30000;
+  xhr.onload = function() {
+    var status = xhr.status;
+    if (status == 0) {
+      var response = JSON.parse(xhr.response);
+
+      function geolocate () {
+        var coordinate = response.shift();
+        if (!coordinate) return;
+
+        var data = {
+          latlng: {
+            lat: coordinate.lat,
+            lng: coordinate.lon
+          }
+        }
+
+        self.showLocation(data);
+
+        setTimeout(function () {
+          geolocate();
+        }, 1000);
+      }
+
+      geolocate();
+
+    } else {
+      console.log(status);
+    }
+  }.bind(this);
+  xhr.onerror = function() {
+    var status = xhr.status;
+  }
+  xhr.send();
 };
 
 NavvyCtrl.prototype._search = function () {
-  //temporary
-  //must add function to show input search
-  this._searchLocation();
+  this._toggleSearchContainer(true);
+  this.closeButton.focus();
+};
+
+NavvyCtrl.prototype._closeButtonClicked = function () {
+  this.searchList.innerHTML = '';
+  this.searchInput.value = '';
+  this._toggleSearchContainer(false);
+};
+
+NavvyCtrl.prototype._toggleSearchContainer = function (isShown) {
+  var el = document.getElementById('navvyCtrlSearchContainer');
+  var isHidden = (el.className == 'navvyCtrlHidden') ? true : false;
+
+  if (isHidden && isShown) {
+    el.className = '';
+    this.searchControlHidden = false;
+  } else if (!isHidden && !isShown) {
+    el.className = 'navvyCtrlHidden';
+    this.searchControlHidden = true;
+  }
 };
 //end
 
 NavvyCtrl.prototype.handleControllerEvent = function () {};
 NavvyCtrl.prototype.cleanUp = function () {
-  // this.homeButton.removeEventListener('click', this.events.home);
-  // this.searchButton.removeEventListener('click', this.events.search);
+  this.homeButton.removeEventListener('click', this.events.home);
+  this.searchButton.removeEventListener('click', this.events.search);
 };

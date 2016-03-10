@@ -56,3 +56,164 @@
   background-color: #2C67C5;
   border: 1px solid rgba(27, 67, 130, 1);
 }
+
+.NavvyCtrl div#navvyCtrlSearchContainer {
+  position: absolute;
+  padding: 10px 20px 20px 20px;
+  background-color: rgb(255,255,255);
+  z-index: 1;
+  width: 720px;
+  height: 430px;
+  left: 15px;
+  top: 15px;
+  -webkit-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.75);
+  border-radius: 3px;
+}
+
+.NavvyCtrl #navvyCtrlSearchInput {
+  display: block;
+  width: 620px;
+  padding: 5px 10px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 30px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  color: #aaa;
+  position: relative;
+  left: 90px;
+}
+
+.NavvyCtrl #navvyCtrlSearchPlace {
+  display: block;
+  background-image: url('../images/accept.png');
+  background-size: 60px 60px;
+  background-position: center;
+  background-color: none;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  left: 60px;
+  top: 21px;
+  border: none;
+}
+
+.NavvyCtrl #navvyCtrlSearchPlace:focus {
+  border: 1px solid black !important;
+}
+
+.NavvyCtrl #navvyCtrlSearchClose {
+  display: block;
+  background-image: url('../images/remove.png');
+  background-size: 60px 60px;
+  background-position: center;
+  background-color: none;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  border: none;
+}
+
+.NavvyCtrl #navvyCtrlSearchClose:focus {
+  border: 1px solid black !important;
+}
+
+.NavvyCtrl #navvyCtrlSearchList {
+  padding: 0;
+  margin: 0;
+  color: #aaa;
+  font-weight: bold;
+}
+
+.NavvyCtrl #navvyCtrlSearchList li {
+  padding: 20px 10px 20px 55px;
+  font-weight: bold;
+  position: relative;
+}
+.NavvyCtrl #navvyCtrlSearchList > li:not(:last-child) {
+  border-bottom: 1px solid #505050;
+}
+
+.NavvyCtrl #navvyCtrlSearchList li .mapCtrlGoToDestination {
+  height: 40px;
+  width: 40px;
+  background-image: url('../images/directions.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 11px;
+  border: none;
+  background-color: none;
+}
+
+.NavvyCtrl .navvyCtrlHidden {
+  display: none;
+}
+
+.NavvyCtrl #navvyCtrlSearchList {
+  padding: 0;
+  margin: 0;
+  color: #aaa;
+  font-weight: bold;
+}
+
+.NavvyCtrl #navvyCtrlSearchList li {
+  padding: 20px 10px 20px 55px;
+  font-weight: bold;
+  position: relative;
+}
+.NavvyCtrl #navvyCtrlSearchList > li:not(:last-child) {
+  border-bottom: 1px solid #505050;
+}
+
+.NavvyCtrl #navvyCtrlSearchList li .navvyCtrlGoToDestination {
+  height: 40px;
+  width: 40px;
+  background-image: url('../images/directions.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 11px;
+  border: none;
+  background-color: none;
+}
+
+.NavvyCtrl #navvyCtrlRouteInstructions {
+  position: absolute;
+  top: 0;
+  left: 600px;
+  max-height: 480px;
+}
+
+.NavvyCtrl #navvyCtrlRouteInstructions .navvyCtrlInstructions {
+  padding: 10px;
+  width: 180px;
+  height: 780px;
+  background-color: #fff;
+  overflow: auto;
+  -webkit-box-shadow: -4px 0px 14px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: -4px 0px 14px -2px rgba(0,0,0,0.75);
+  box-shadow: -4px 0px 14px -2px rgba(0,0,0,0.75);
+}
+
+.NavvyCtrl #navvyCtrlRouteInstructions .navvyCtrlInstructions > div {
+  font-size: 15px;
+  padding: 5px;
+  line-height: 17px;
+  color: #505050;
+  font-weight: bold;
+}
+
+.NavvyCtrl #navvyCtrlRouteInstructions .navvyCtrlInstructions img {
+  margin-right: 5px;
+}
