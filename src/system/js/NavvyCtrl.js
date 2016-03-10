@@ -28,13 +28,13 @@ NavvyCtrl.prototype._loadCSS = function () {
   mainCSS.type = 'text/css';
   mainCSS.rel = 'stylesheet';
   mainCSS.href = this._PATH + 'css/NavvyCtrl.css';
-  document.body.appendChild(mainCSS);
+  this.parentDiv.appendChild(mainCSS);
 
   var ltCSS = document.createElement('link');
   ltCSS.type = 'text/css';
   ltCSS.rel = 'stylesheet';
   ltCSS.href = this._PATH + 'css/leaflet.css';
-  document.body.appendChild(ltCSS);
+  this.parentDiv.appendChild(ltCSS);
 };
 
 NavvyCtrl.prototype._createContainer = function () {
@@ -51,13 +51,13 @@ NavvyCtrl.prototype._createContainer = function () {
 NavvyCtrl.prototype.init = function () {
   if (this._initialize) return;
 
-  this._loadCSS();
   this._createContainer();
+  this._loadCSS();
 
   this._loadMap(function () {
     this._createMap(function () {
-      //this._checkLocation(this.currCoords.lat, this.currCoords.lng);
-      //this._showMarker(this.currCoords.lat, this.currCoords.lng);
+      this._checkLocation(this.currCoords.lat, this.currCoords.lng);
+      this._showMarker(this.currCoords.lat, this.currCoords.lng);
     }.bind(this));
 
   }.bind(this));
@@ -76,8 +76,8 @@ NavvyCtrl.prototype._loadMap = function (cb) {
   mq.src = this.properties.map.mapUrl + this.properties.map.key;
   mq.onload = function () { cb(); };
 
-  document.body.appendChild(script);
-  document.body.appendChild(mq);
+  this.parentDiv.appendChild(script);
+  this.parentDiv.appendChild(mq);
 };
 
 NavvyCtrl.prototype._createMap = function (cb) {

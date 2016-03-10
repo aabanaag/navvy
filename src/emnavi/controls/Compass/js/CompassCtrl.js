@@ -48,7 +48,7 @@ CompassCtrl.prototype.loadNavvy = function () {
       this.loadSystem();
     }.bind(this);
 
-    document.body.appendChild(script);
+    this.parentDiv.appendChild(script);
   } catch (e) {
     _reloadNavvy();
   }
