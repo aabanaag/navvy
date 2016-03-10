@@ -57,7 +57,7 @@ NavvyCtrl.prototype.init = function () {
   this._loadMap(function () {
     this._createMap(function () {
       //this._checkLocation(this.currCoords.lat, this.currCoords.lng);
-      //this._showMarker(this.currCoords.lat, this.currCoords.lng);
+      this._showMarker(this.currCoords.lat, this.currCoords.lng);
     }.bind(this));
 
   }.bind(this));
@@ -152,8 +152,66 @@ NavvyCtrl.prototype._checkLocation = function (lat, lng) {
   }
 };
 
-NavvyCtrl.prototype.handleControllerEvent = function (e) {
+NavvyCtrl.prototype._moveMap = function (ev) {
+  var offsetX = 1, offsetY = 1;
+  switch (ev) {
+    case 'up':
+      offsetY = 100;
+    break;
+    case 'down':
+      offsetY = -100;
+    break;
+    case 'left':
+      offsetX = 100;
+    break;
+    case 'right':
+      offsetX = -100;
+    break;
+  }
+  this._offsetCenter(this._map.getCenter(), offsetX, offsetY);
+};
 
+NavvyCtrl.prototype._offsetCenter = function (latlng, offsetx, offsety) {
+  var latLng = new L.latLng(latlng.lat, latlng.lng);
+
+  if (offsetx && offsety) {
+    var targetPoint = this._map.project(latLng, this._map.getZoom()).subtract([offsetx, offsety]),
+    targetLatLng = this._map.unproject(targetPoint, this._map.getZoom());
+
+    this._map.panTo(targetLatLng);
+  } else {
+    this._map.panTo(latLng);
+  }
+};
+
+NavvyCtrl.prototype._zoomIn = function () {
+  var zoom = this._map.getZoom();
+  if (zoom <= this.properties.map.MAX_ZOOM) this._map.setZoom(zoom + 1);
+};
+
+NavvyCtrl.prototype._zoomOut = function () {
+  var zoom = this._map.getZoom();
+  if (zoom >= this.properties.map.MIN_ZOOM) this._map.setZoom(zoom - 1);
+};
+
+NavvyCtrl.prototype.handleControllerEvent = function (e) {
+  switch (e) {
+    case 'select':
+
+      break;
+    case 'up':
+    case 'left':
+    case 'right':
+    case 'down':
+      this._moveMap(e);
+      break;
+    case 'cw':
+      this._zoomIn();
+      break;
+    case 'ccw':
+      this._zoomOut();
+      break;
+  }
 };
 
 NavvyCtrl.prototype.cleanUp = function () {};
