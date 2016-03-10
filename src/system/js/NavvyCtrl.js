@@ -57,7 +57,7 @@ NavvyCtrl.prototype.init = function () {
   this._loadMap(function () {
     this._createMap(function () {
       //this._checkLocation(this.currCoords.lat, this.currCoords.lng);
-      this._showMarker(this.currCoords.lat, this.currCoords.lng);
+      //this._showMarker(this.currCoords.lat, this.currCoords.lng);
     }.bind(this));
 
   }.bind(this));
