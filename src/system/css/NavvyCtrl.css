@@ -11,10 +11,48 @@
   font-size:1.8em;
 }
 
+.NavvyCtrl button.mapCtrlButton {
+  position: absolute;
+  left: 10px;
+  height: 60px;
+  width: 60px;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid white;
+}
+
 .NavvyCtrl #NavvyCtrlMapContainer {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
+}
+
+.NavvyCtrl button#navvyCtrlHomeButton {
+  background: url('../images/home.png') no-repeat;
+  background-size: 130px 60px;
+  background-position: -68px 0px;
+  background-color: white;
+  top: 10px;
+}
+
+.NavvyCtrl button#navvyCtrlHomeButton:focus {
+  background-position: -4px 0px;
+  background-color: #2C67C5;
+  border: 1px solid rgba(27, 67, 130, 1);
+}
+
+.NavvyCtrl button#navvyCtrlSearchButton {
+  background: url('../images/search.png') no-repeat;
+  background-size: 130px 60px;
+  background-position: -68px 0px;
+  background-color: white;
+  left: 80px !important;
+  top: 10px;
+}
+
+.NavvyCtrl button#navvyCtrlSearchButton:focus {
+  background-position: -4px 0px;
+  background-color: #2C67C5;
+  border: 1px solid rgba(27, 67, 130, 1);
 }
