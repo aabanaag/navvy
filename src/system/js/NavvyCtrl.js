@@ -4,6 +4,7 @@ function NavvyCtrl (uiaId, parentDiv, ctrlId) {
   this.uiaId = uiaId;
 
   this.properties = {
+    isDebug: true,
     map: {
       MIN_ZOOM: 16,
       MAX_ZOOM: 18,
@@ -54,10 +55,11 @@ NavvyCtrl.prototype.init = function () {
   this._createContainer();
 
   this._loadMap(function () {
-    this._createMap();
+    this._createMap(function () {
+      //this._checkLocation(this.currCoords.lat, this.currCoords.lng);
+      //this._showMarker(this.currCoords.lat, this.currCoords.lng);
+    }.bind(this));
 
-    this._marker = this._createMarker(this.currCoords.lat, this.currCoords.lng);
-    this._marker.addTo(this._map);
   }.bind(this));
 
   this._initialized = true;
@@ -78,7 +80,7 @@ NavvyCtrl.prototype._loadMap = function (cb) {
   document.body.appendChild(mq);
 };
 
-NavvyCtrl.prototype._createMap = function () {
+NavvyCtrl.prototype._createMap = function (cb) {
   this._mapLayer = MQ.mapLayer();
   this.currCoords = { lat: 14.5688370, lng: 121.0236740 };
 
@@ -86,11 +88,13 @@ NavvyCtrl.prototype._createMap = function () {
     layers: this._mapLayer,
     attributionControl: false,
     zoomControl: false,
-    center: [this.currCoords.lat, this.currCoords.lng],
+    center: [14.5833, 121.0000],
     zoom: this.properties.map.DEFAULT_ZOOM,
     minZoom: this.properties.map.MIN_ZOOM,
     maxZoom: this.properties.map.MAX_ZOOM
   });
+
+  this._map.on('load', cb());
 };
 
 NavvyCtrl.prototype._createPin = function () {
@@ -113,23 +117,43 @@ NavvyCtrl.prototype._createMarker = function (lat, lng) {
 };
 
 NavvyCtrl.prototype._updateMarker = function (lat, lng) {
-  if (!this._marker) {
-    t
-  } else {
-    var coords = L.latLng(lat, lng);
-    this._marker.setLatLng(coords);
-    this._map.panTo(coords, this._map.getZoom());
-  }
+  var coords = L.latLng(lat, lng);
+  this._marker.setLatLng(coords);
+  this._map.panTo(coords, this._map.getZoom());
 };
+
+NavvyCtrl.prototype._showMarker = function (lat, lng) {
+  var coords = L.latLng(lat, lng);
+  this._marker = this._createMarker(lat, lng);
+  this._marker.addTo(this._map);
+  this._map.panTo(coords, this._map.getZoom());
+}
 
 NavvyCtrl.prototype.showLocation = function (location) {
   if (location.latlng != null) {
-    if (!this._marker) {
-      his._marker = this._createMarker(location.latlng.lat, location.latlng.lng);
-      this._marker.addTo(this._map);
-    } else this._updateMarker(location.latlng.lat, location.latlng.lng);
+    //this._checkLocation(location.latlng.lat, location.latlng.lng);
+
+    if (!this._marker) this._showMarker(location.latlng.lat, location.latlng.lng);
+    else this._updateMarker(location.latlng.lat, location.latlng.lng);
   }
 };
 
-NavvyCtrl.prototype.handleControllerEvent = function () {};
+NavvyCtrl.prototype._checkLocation = function (lat, lng) {
+  var el = document.getElementById('tempDebug');
+
+  if (el) el.innerHTML = 'lat: '+lat+' lng: '+lng;
+  else {
+    var tempDebug = document.createElement('span');
+    tempDebug.id = 'tempDebug';
+    tempDebug.style = 'position:absolute; left: 10px; top:10px; color:red;';
+    tempDebug.innerHTML = 'lat: '+lat+' lng: '+lng;
+
+    this.ctrlDiv.appendChild(tempDebug);
+  }
+};
+
+NavvyCtrl.prototype.handleControllerEvent = function (e) {
+
+};
+
 NavvyCtrl.prototype.cleanUp = function () {};

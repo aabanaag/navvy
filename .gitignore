@@ -2,3 +2,4 @@
 node_modules/
 debug/
 release/
+src/emnavi/controls/Compass/resources/*

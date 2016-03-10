@@ -1,9 +1,19 @@
 .CompassCtrl {
   font-family: "Tipperary", Arial, Helvetica, sans-serif;
   text-align: left;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background: url(../images/CompassBg.png) 100% 0% no-repeat;
+  width: 800px;
+  height: 480px;
+  position: absolute;
+  background: url(../images/sdcard.png) 100% 0% no-repeat;
   z-index: 0;
+  overflow: hidden;
+  font-size: 1.8em;
+}
+
+.CompassCtrl label {
+  font-size: 3em;
+  display: block;
+  text-align: center;
+  padding: 350px 30px 30px 30px;
+  text-shadow: #000 0 3px 3px;
 }

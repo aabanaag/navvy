@@ -8,25 +8,51 @@ function CompassCtrl (uiaId, parentDiv, ctrlId, properties) {
   this.navvyInitialized = false;
   this.navvyCtrl = false;
 
+  this.retryCount = 0;
+  this.maxRetry = 10;
+  this.retryTimeout = 30 * 1000;
+
   this.properties = {
     _navvyDir: 'apps/emnavi/controls/Compass/resources/system/js/NavvyCtrl.js'
   };
 
-  setTimeout(function () {
-    this.loadNavvy();
-  }.bind(this), 500);
+  this.loadNavvy();
+  //this.renderNoNavvy();
 };
 
 CompassCtrl.prototype.loadNavvy = function () {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = this.properties._navvyDir;
+  var _reloadNavvy = function () {
+    this.renderNoNavvy();
+    this.retryCount++;
 
-  script.onload = function () {
-    this.loadSystem();
+    if (this.retryCount > this.maxRetry) {
+      this.ctrlLabel.innerHTML = 'Invalid SD Card';
+    } else {
+      setTimeout(function () {
+        this.loadNavvy();
+      }.bind(this), this.retryTimeout);
+    }
   }.bind(this);
 
-  document.body.appendChild(script);
+  try {
+    var startTimeout = setTimeout(function () {
+      _reloadNavvy();
+    }, 800);
+
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = this.properties._navvyDir;
+
+    script.onload = function () {
+      clearTimeout(startTimeout);
+      this.loadSystem();
+    }.bind(this);
+
+    document.body.appendChild(script);
+  } catch (e) {
+    _reloadNavvy();
+  }
+
 };
 
 CompassCtrl.prototype.loadSystem = function () {
@@ -39,14 +65,28 @@ CompassCtrl.prototype.loadSystem = function () {
   }
 };
 
+CompassCtrl.prototype.renderNoNavvy = function () {
+  if(this.navvyInitialized) return;
+
+   // Container element
+  this.ctrlDiv = document.createElement('div');
+  this.ctrlDiv.className = 'CompassCtrl';
+  this.parentDiv.appendChild(this.ctrlDiv);
+
+  // create map
+  this.ctrlLabel = document.createElement('label');
+  this.ctrlDiv.appendChild(this.ctrlLabel);
+  this.ctrlLabel.innerHTML = "Insert SD Card";
+};
+
 CompassCtrl.prototype.setLocationData = function (location) {
-  if (!this.navvyDisplayed) return;
+  if (!this.navvyInitialized) return;
 
   this.navvyCtrl.showLocation(location);
 };
 
 CompassCtrl.prototype.cleanUp = function () {
-  if (!this.navvyDisplayed) return;
+  if (!this.navvyInitialized) return;
   this.navvyCtrl.cleanUp();
 };
 
