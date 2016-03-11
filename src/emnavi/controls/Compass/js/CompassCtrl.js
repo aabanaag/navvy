@@ -46,6 +46,7 @@ CompassCtrl.prototype.loadNavvy = function () {
 
     script.onload = function () {
       clearTimeout(startTimeout);
+      //this.loadSystem(true);
       this.checkConnectivity();
     }.bind(this);
 
@@ -99,14 +100,14 @@ CompassCtrl.prototype.checkConnectivity = function () {
   xhr.open("GET", this.properties._networkTest, true);
   try {
     xhr.send();
-    xhr.onreadystatechange = function (res) {
+    xhr.onload = function (res) {
       if (res.currentTarget.readyState == 4 && res.currentTarget.status >= 200 && res.currentTarget.status < 304) {
         //this.parentDiv.removeChild(this.ctrlDiv);
         this.loadSystem(true);
       } else this.loadSystem(false);
     }.bind(this);
   } catch (e) {
-    this._showNoConnection();
+    this.loadSystem(false);
   }
 };
 

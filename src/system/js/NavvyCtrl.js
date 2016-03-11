@@ -6,6 +6,7 @@ function NavvyCtrl (uiaId, parentDiv, ctrlId, properties) {
   this.properties = {
     isDebug: true,
     map: {
+      moveWithGPS: true,
       MIN_ZOOM: 16,
       MAX_ZOOM: 18,
       DEFAULT_ZOOM: 17,
@@ -54,15 +55,18 @@ NavvyCtrl.prototype._createContainer = function () {
 };
 
 NavvyCtrl.prototype.init = function () {
-  if (this._initialize) return;
+  if (this._initialized) return;
 
   this._createContainer();
   this._loadCSS();
 
   this._loadMap(function () {
     this._createMap(function () {
+      //this._showMarker(this.currCoords.lat, this.currCoords.lng);
       //this._checkLocation(this.currCoords.lat, this.currCoords.lng);
-      this._showMarker(this.currCoords.lat, this.currCoords.lng);
+      // setInterval(function () {
+      //   this._showMarker(this.currCoords.lat, this.currCoords.lng);
+      // }.bind(this), 1000);
     }.bind(this));
 
   }.bind(this));
@@ -89,6 +93,7 @@ NavvyCtrl.prototype._createMap = function (cb) {
   this._mapLayer = MQ.mapLayer();
   this.currCoords = { lat: 14.5688370, lng: 121.0236740 };
 
+  if (this._map) this._map.remove();
   this._map = L.map('NavvyCtrlMapContainer', {
     layers: this._mapLayer,
     attributionControl: false,
@@ -131,13 +136,18 @@ NavvyCtrl.prototype._showMarker = function (lat, lng) {
   var coords = L.latLng(lat, lng);
   this._marker = this._createMarker(lat, lng);
   this._marker.addTo(this._map);
+  if (this.properties.map.moveWithGPS) this._centerMap(lat, lng);
+};
+
+NavvyCtrl.prototype._centerMap = function (lat, lng) {
+  var coords = L.latLng(lat, lng);
   this._map.panTo(coords, this._map.getZoom());
-}
+};
 
 NavvyCtrl.prototype.showLocation = function (location) {
   if (location.latlng != null) {
     //this._checkLocation(location.latlng.lat, location.latlng.lng);
-
+    //this.properties.map.moveWithGPS = true;
     if (!this._marker) this._showMarker(location.latlng.lat, location.latlng.lng);
     else this._updateMarker(location.latlng.lat, location.latlng.lng);
   }
@@ -173,6 +183,8 @@ NavvyCtrl.prototype._moveMap = function (ev) {
       offsetX = -100;
     break;
   }
+
+  this.properties.map.moveWithGPS = false;
   this._offsetCenter(this._map.getCenter(), offsetX, offsetY);
 };
 
@@ -219,4 +231,7 @@ NavvyCtrl.prototype.handleControllerEvent = function (e) {
   }
 };
 
-NavvyCtrl.prototype.cleanUp = function () {};
+NavvyCtrl.prototype.cleanUp = function () {
+  this._map = null;
+  this._marker = null;
+};
