@@ -103,11 +103,11 @@ CompassCtrl.prototype.checkConnectivity = function () {
     xhr.onload = function (res) {
       if (res.currentTarget.readyState == 4 && res.currentTarget.status >= 200 && res.currentTarget.status < 304) {
         //this.parentDiv.removeChild(this.ctrlDiv);
-        this.loadSystem(true);
-      } else this.loadSystem(false);
+        this.loadSystem(false);
+      } else this.loadSystem(true);
     }.bind(this);
   } catch (e) {
-    this.loadSystem(false);
+    this.loadSystem(true);
   }
 };
 

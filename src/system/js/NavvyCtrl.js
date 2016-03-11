@@ -16,7 +16,8 @@ function NavvyCtrl (uiaId, parentDiv, ctrlId, properties) {
       osrm_url: 'https://router.project-osrm.org/',
       key: '7sp7uN2HZY7IjMHMlaIwjhIHoGGPao4P'
     },
-    networkTest: 'http://mazda-twitter-api.herokuapp.com/ping'
+    networkTest: 'http://mazda-twitter-api.herokuapp.com/ping',
+    tiles: 'apps/emnavi/controls/Compass/resources/tiles'
   }
 
   for (var i in properties) {
@@ -170,11 +171,6 @@ NavvyCtrl.prototype.init = function () {
 
   this._loadMap(function () {
     this._createMap(function () {
-      //this._showMarker(this.currCoords.lat, this.currCoords.lng);
-      //this._checkLocation(this.currCoords.lat, this.currCoords.lng);
-      // setInterval(function () {
-      //   this._showMarker(this.currCoords.lat, this.currCoords.lng);
-      // }.bind(this), 1000);
       this._loadPlugins();
     }.bind(this));
   }.bind(this));
@@ -198,7 +194,7 @@ NavvyCtrl.prototype._loadMap = function (cb) {
 };
 
 NavvyCtrl.prototype._createMap = function (cb) {
-  this._mapLayer = MQ.mapLayer();
+  this._mapLayer = this._createLayer();
   this.currCoords = { lat: 14.5688370, lng: 121.0236740 };
 
   if (this._map) this._map.remove();
@@ -214,6 +210,14 @@ NavvyCtrl.prototype._createMap = function (cb) {
 
   this._map.on('load', cb());
 };
+
+NavvyCtrl.prototype._createLayer = function () {
+  if (this.properties.noConnectivity) {
+    return L.tileLayer(this.properties.tiles + '/{z}/{x}/{y}.png');
+  } else {
+    return MQ.mapLayer();
+  }
+}
 
 NavvyCtrl.prototype._createPin = function () {
   var imgSrc = 'images/arrow.png';
