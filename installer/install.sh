@@ -3,7 +3,7 @@
 # v0.1
 # Mazda Philippines
 # Creator: WunderkindTech Solutions
-# Date Modified: 02/23/2016
+# Date Modified: 03/11/2016
 # =================================
 #
 # Purpose: Install Navvy via USB
@@ -53,7 +53,8 @@ done
 
 
 cp -a files/emnavi /jci/gui/apps/emnavi
-cp -a files/system /jci/gui/apps/emnavi/controls/Compass/resources/
+
+ln -s /tmp/mnt/sd_nav/ /jci/gui/apps/emnavi/controls/Compass/resources
 
 chmod 755 /jci/gui/apps/emnavi/*
 

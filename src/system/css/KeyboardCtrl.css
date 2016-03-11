@@ -4,25 +4,22 @@
    text-align: center;
    font-size: 35px;
    color: white;
-   width: 790px;
-   height: 416px;
+   width: 740px;
+   height: 440px;
    background-color: rgba(0,0,0,0.85);
    bottom: 0px;
    left: 0px;
    direction: ltr;
    padding: 10px;
    z-index: 999999;
-   /*
-    * Input active/focused/disabled classes
-    */
  }
  .KeyboardCtrl.KeyboardCtrl_custom .inputBoxTouchActiveArea {
    display: block;
    position: absolute;
    height: 59px;
-   width: 688px;
+   width: 683px;
    top: 6px;
-   left: 6px;
+   left: 0px;
    outline: none;
    background: url("../images/keyboard/Char_Input.png");
    background-position: center;
@@ -70,7 +67,7 @@
    background-position: center;
    background-repeat: no-repeat;
    transform: rotate(180deg);
-   left: 659px;
+   left: 649px;
    height: 59px;
  }
  .KeyboardCtrl.KeyboardCtrl_custom .inputDiv .caret {
@@ -100,7 +97,7 @@
    height: 35px;
  }
  .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.fiveTen {
-   width: 656px;
+   width: 645px;
  }
  .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.fiveTen .inputSpan {
    top: 12px;
@@ -1011,7 +1008,7 @@
    height: 349px;
    top: 67px;
    width: 100%;
-   left: 0%;
+   left: 2.5px;
  }
  .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .row {
    position: relative;
@@ -1022,7 +1019,7 @@
  .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .btn {
    display: inline-block;
    vertical-align: middle;
-   width: 74px;
+   width: 73px;
    height: 91px;
    color: white;
    font-size: 35px;
@@ -1169,12 +1166,12 @@
  }
  .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper #btnCancel {
    height: 64px;
-   width: 93px;
+   width: 70px;
    line-height: 64px;
    background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14.png");
    background-position: center;
    background-repeat: no-repeat;
-   margin-right: 3px;
+   margin-right: 2px;
    margin-bottom: 0px;
  }
  .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .disabled#btnCancel {
@@ -1326,9 +1323,9 @@
  }
  .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .KeyboardCtrlDeleteBtn_Fs {
    position: absolute;
-   width: 75px;
+   width: 73px;
    height: 59px;
-   right: 5px;
+   right: 0px;
    top: -340px;
    line-height: 59px;
    margin-right: 3px;
@@ -1657,9 +1654,9 @@
  }
  .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .KeyboardCtrlDeleteBtn_En {
    position: absolute;
-   width: 75px;
+   width: 73px;
    height: 59px;
-   right: 5px;
+   right: 0px;
    top: -336px;
    line-height: 59px;
    margin-right: 2px;
@@ -1736,7 +1733,7 @@
  .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .btn {
    display: inline-block;
    vertical-align: middle;
-   width: 62px;
+   width: 61px;
    height: 68px;
    color: white;
    font-size: 35px;
@@ -1883,7 +1880,7 @@
  }
  .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper #btnCancel {
    height: 64px;
-   width: 93px;
+   width: 77px;
    line-height: 64px;
    background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14.png");
    background-position: center;
@@ -2040,7 +2037,7 @@
  }
  .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .KeyboardCtrlDeleteBtn_Fs {
    position: absolute;
-   width: 75px;
+   width: 65px;
    height: 59px;
    right: 5px;
    top: -336px;
