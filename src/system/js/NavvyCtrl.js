@@ -30,7 +30,8 @@ NavvyCtrl.prototype._registerEvents = function () {
     home: this._home.bind(this),
     search: this._search.bind(this),
     geocode: this._searchLocation.bind(this),
-    close: this._closeButtonClicked.bind(this)
+    close: this._closeButtonClicked.bind(this),
+    removeRouting: this._removeRouting.bind(this)
   };
 };
 
@@ -96,6 +97,7 @@ NavvyCtrl.prototype._createContainer = function () {
 NavvyCtrl.prototype._createMenus = function () {
   this.homeButton = document.createElement('button');
   this.searchButton = document.createElement('button');
+  this.cancelButton = document.createElement('button');
 
   this.homeButton.type = 'button';
   this.homeButton.id = 'navvyCtrlHomeButton';
@@ -107,8 +109,15 @@ NavvyCtrl.prototype._createMenus = function () {
   this.searchButton.className = 'mapCtrlButton';
   this.searchButton.addEventListener('click', this.events.search);
 
+  this.cancelButton.type = 'button';
+  this.cancelButton.id = 'navvyCtrlCancelRouteButton';
+  this.cancelButton.className = 'mapCtrlButton';
+  this.cancelButton.style.display = 'none';
+  this.cancelButton.addEventListener('click', this.events.removeRouting);
+
   this.ctrlDiv.appendChild(this.homeButton);
   this.ctrlDiv.appendChild(this.searchButton);
+  this.ctrlDiv.appendChild(this.cancelButton);
 };
 
 NavvyCtrl.prototype._createSearchControl = function () {
@@ -240,11 +249,18 @@ NavvyCtrl.prototype._updateMarker = function (lat, lng) {
         this._marker._icon.style.transform = this._marker._icon.style.transform + 'rotate(' + this.bearingPoints[this.bearingIndex].ang + 'deg)';
         this._map.panTo(this.currCoords, this._map.getZoom());
       } else {
-        this._removeRouting();
         this.currCoords = {
           lat: lat,
           lng: lng
         }
+
+        if (this.recalculateBuffer >= 2) {
+          this._removeRouting();
+          this._recalculateRoute();
+        } else {
+          this.recalculateBuffer += 1;
+        }
+
         this._marker.setLatLng(this.currCoords);
         this._map.panTo(this.currCoords, this._map.getZoom());
       }
@@ -321,6 +337,7 @@ NavvyCtrl.prototype._createSearchResults = function (matches) {
 };
 
 NavvyCtrl.prototype._routeToDestination = function (data) {
+  this.routeData = data;
   if (this.routingLayer && this.hasInstructions) {
     this._removeRouting();
   }
@@ -349,6 +366,8 @@ NavvyCtrl.prototype._routeToDestination = function (data) {
 };
 
 NavvyCtrl.prototype._addRouteInstructions = function (data) {
+  this.recalculateBuffer = 0; //if 2 must recalculate route
+
   data.route.shape.shapePoints.unshift(this.currCoords);
   var shapePoints = data.route.shape.shapePoints.map(function (obj) {
     return [obj.lng, obj.lat]
@@ -398,6 +417,7 @@ NavvyCtrl.prototype._addRouteInstructions = function (data) {
     container.innerHTML = html;
     this.routeInstructions.appendChild(container);
     //this._offsetCenter(this.currCoords, -100, 0);
+    this._toggleSearchOptions();
 
     var lineString = data.route.shape.shapePoints;
     this.polyLineString = lineString.map(function (obj) {
@@ -405,6 +425,10 @@ NavvyCtrl.prototype._addRouteInstructions = function (data) {
     }.bind(this));
 
   }
+};
+
+NavvyCtrl.prototype._recalculateRoute = function () {
+  this._routeToDestination(this.routeData);
 };
 
 NavvyCtrl.prototype._setMapBearing = function (bearing) {
@@ -490,10 +514,21 @@ NavvyCtrl.prototype._getPathBetweenPoints = function (data, callback) {
   xhr.send();
 };
 
+NavvyCtrl.prototype._toggleSearchOptions = function (argument) {
+  if (this.searchButton.style.display == 'none') {
+    this.searchButton.style.display = 'block';
+    this.cancelButton.style.display = 'none';
+  } else {
+    this.searchButton.style.display = 'none';
+    this.cancelButton.style.display = 'block';
+  }
+};
+
 NavvyCtrl.prototype._removeRouting = function () {
   this._map.removeLayer(this.routingLayer);
   this.routeInstructions.innerHTML = '';
   this.polyLineString = this.bearingPoints = this.hasInstructions = this.routingLayer = undefined;
+  this._toggleSearchOptions();
 };
 
 //event functions

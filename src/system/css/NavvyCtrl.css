@@ -57,6 +57,20 @@
   border: 1px solid rgba(27, 67, 130, 1);
 }
 
+.NavvyCtrl button#navvyCtrlCancelRouteButton {
+  background: url('../images/cancel.png') no-repeat;
+  background-size: 60%;
+  background-position: center;
+  background-color: white;
+  left: 80px !important;
+  top: 10px;
+}
+
+.NavvyCtrl button#navvyCtrlCancelRouteButton:focus {
+  background-color: #2C67C5;
+  border: 1px solid rgba(27, 67, 130, 1);
+}
+
 .NavvyCtrl div#navvyCtrlSearchContainer {
   position: absolute;
   padding: 10px 20px 20px 20px;
