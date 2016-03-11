@@ -56,6 +56,6 @@ cp -a files/emnavi /jci/gui/apps/emnavi
 
 ln -s /tmp/mnt/sd_nav/ /jci/gui/apps/emnavi/controls/Compass/resources
 
-chmod 755 /jci/gui/apps/emnavi/*
+chmod 755 /jci/gui/apps/emnavi/controls/Compass/resources/*
 
 /jci/tools/jci-dialog --title="Mazda Philippines" --text="Navvy v0.1 Install Complete" --ok-label='OK' --no-cancel &

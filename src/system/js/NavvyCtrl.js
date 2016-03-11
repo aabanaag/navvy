@@ -77,7 +77,9 @@ NavvyCtrl.prototype._loadPlugins = function () {
     this._map.panTo(this.currCoords, this._map.getZoom());
   }.bind(this);
   document.body.appendChild(animatedMarker);
+};
 
+NavvyCtrl.prototype._loadSearchPlugin = function () {
   // geocoding
   var geocoding = document.createElement('script');
   geocoding.src = this.properties.map.geoUrl + this.properties.map.key;
@@ -130,8 +132,8 @@ NavvyCtrl.prototype._createMenus = function () {
   this.cancelButton.addEventListener('click', this.events.removeRouting);
 
   this.ctrlDiv.appendChild(this.homeButton);
-  this.ctrlDiv.appendChild(this.searchButton);
-  this.ctrlDiv.appendChild(this.cancelButton);
+  if (!this.properties.noConnectivity) this.ctrlDiv.appendChild(this.searchButton);
+  if (!this.properties.noConnectivity) this.ctrlDiv.appendChild(this.cancelButton);
 };
 
 NavvyCtrl.prototype._createSearchControl = function () {
@@ -172,11 +174,11 @@ NavvyCtrl.prototype.init = function () {
   this._loadCSS();
 
   this._createContainer();
-  this._createMenus();
-  this._createSearchControl();
-  this._loadKeyboard();
+
 
   this._loadMap(function () {
+    this._createMenus();
+
     this._createMap(function () {
       this._loadPlugins();
     }.bind(this));
@@ -200,15 +202,25 @@ NavvyCtrl.prototype._loadMap = function (cb) {
   var script = document.createElement('script');
   script.type = 'text/javascript';
   script.src = this._PATH + 'js/leaflet.js';
-  script.onload = function () {};
+  script.onload = function () {
+    if (this.properties.noConnectivity) cb();
+    else {
+      var mq = document.createElement('script');
+      mq.type = 'text/javascript';
+      mq.src = this.properties.map.mapUrl + this.properties.map.key;
+      mq.onload = function () {
+        this._createSearchControl();
+        this._loadKeyboard();
+        this._loadSearchPlugin();
 
-  var mq = document.createElement('script');
-  mq.type = 'text/javascript';
-  mq.src = this.properties.map.mapUrl + this.properties.map.key;
-  mq.onload = function () { cb(); };
+        cb();
+      }.bind(this);
+
+      this.parentDiv.appendChild(mq);
+    }
+  }.bind(this);
 
   this.parentDiv.appendChild(script);
-  this.parentDiv.appendChild(mq);
 };
 
 NavvyCtrl.prototype._createMap = function (cb) {
@@ -230,7 +242,7 @@ NavvyCtrl.prototype._createMap = function (cb) {
 };
 
 NavvyCtrl.prototype._createLayer = function () {
-  this._checkConnectivity();
+  //this._checkConnectivity();
 
   if (this.properties.noConnectivity) {
     return L.tileLayer(this.properties.tiles + '/{z}/{x}/{y}.png');
@@ -240,7 +252,7 @@ NavvyCtrl.prototype._createLayer = function () {
 }
 
 NavvyCtrl.prototype._createPin = function () {
-  var imgSrc = 'images/arrow.png';
+  var imgSrc = 'images/circle.png';
   return L.icon({
     iconUrl: this._PATH + imgSrc,
     iconSize: [30, 30]
@@ -286,7 +298,7 @@ NavvyCtrl.prototype._updateMarker = function (lat, lng) {
 
         var point = result.features[1].geometry.coordinates;
         this._marker.setLatLng({ lat: point[1], lng: point[0] });
-        this._marker._icon.style.transform = this._marker._icon.style.transform + 'rotate(' + this.bearingPoints[this.bearingIndex].ang + 'deg)';
+        //this._marker._icon.style.transform = this._marker._icon.style.transform + 'rotate(' + this.bearingPoints[this.bearingIndex].ang + 'deg)';
         if (this.properties.map.moveWithGPS) this._centerMap(this.currCoords.lat, this.currCoords.lng);
       } else {
         this.currCoords = {
@@ -552,7 +564,7 @@ NavvyCtrl.prototype._recalculateRoute = function () {
 };
 
 NavvyCtrl.prototype._setMapBearing = function (bearing) {
-  this._marker._icon.style.transform = this._marker._icon.style.transform + 'rotate(' + bearing + 'deg)';
+  //this._marker._icon.style.transform = this._marker._icon.style.transform + 'rotate(' + bearing + 'deg)';
 };
 
 NavvyCtrl.prototype._getDistance = function (coor1, coor2, unit) {
@@ -582,7 +594,7 @@ NavvyCtrl.prototype._getDistance = function (coor1, coor2, unit) {
 
 NavvyCtrl.prototype._checkPolyIntersect = function (location) {
   var pt = turf.point([location.lng, location.lat]);
-  var buff = turf.buffer(this.lineString, 2.5, 'meters');
+  var buff = turf.buffer(this.lineString, 7, 'meters');
   var intersection = turf.intersect(buff.features[0].geometry, pt);
 
   return intersection;
@@ -590,7 +602,7 @@ NavvyCtrl.prototype._checkPolyIntersect = function (location) {
 
 NavvyCtrl.prototype._checkPointIntersect = function (pt1, pt2) {
   pt1 = turf.point([pt1.lng, pt1.lat]);
-  var buff = turf.buffer(pt1, 2.5, 'meters');
+  var buff = turf.buffer(pt1, 4, 'meters');
   pt2 = turf.point([pt2.lng, pt2.lat]);
   var intersection = turf.intersect(buff.features[0].geometry, pt2);
 
