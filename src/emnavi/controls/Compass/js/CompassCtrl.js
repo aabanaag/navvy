@@ -106,6 +106,9 @@ CompassCtrl.prototype.checkConnectivity = function () {
         this.loadSystem(false);
       } else this.loadSystem(true);
     }.bind(this);
+    xhr.onerror = function () {
+      this.loadSystem(true);
+    }.bind(this);
   } catch (e) {
     this.loadSystem(true);
   }
