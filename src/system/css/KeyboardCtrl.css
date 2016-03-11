@@ -1,0 +1,3220 @@
+ .KeyboardCtrl.KeyboardCtrl_custom {
+   /*display: none;*/
+   position: absolute;
+   text-align: center;
+   font-size: 35px;
+   color: white;
+   width: 790px;
+   height: 416px;
+   background-color: rgba(0,0,0,0.85);
+   bottom: 0px;
+   left: 0px;
+   direction: ltr;
+   padding: 10px;
+   z-index: 999999;
+   /*
+    * Input active/focused/disabled classes
+    */
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputBoxTouchActiveArea {
+   display: block;
+   position: absolute;
+   height: 59px;
+   width: 688px;
+   top: 6px;
+   left: 6px;
+   outline: none;
+   background: url("../images/keyboard/Char_Input.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   z-index: 3;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv {
+   display: block;
+   position: absolute;
+   height: 35px;
+   width: 656px;
+   top: 6px;
+   left: 6px;
+   padding: 12px 16px;
+   outline: none;
+   overflow: hidden;
+   text-align: left;
+   white-space: pre;
+   color: white;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv .inputFade {
+   position: absolute;
+   top: 0px;
+   z-index: 2;
+   width: 28px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv #coverLeft {
+   width: 0px;
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv #coverRight {
+   width: 0px;
+   height: 59px;
+   left: 688px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv #fadeLeft {
+   background: url("../images/keyboard/DisplayMask.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv #fadeRight {
+   background: url("../images/keyboard/DisplayMask.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   transform: rotate(180deg);
+   left: 659px;
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv .caret {
+   position: absolute;
+   width: 2px;
+   background: url("../images/keyboard/Cursor.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv .caret.focused {
+   background: url("../images/keyboard/Cursor_Focus.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv .caret.activeState {
+   background: url("../images/keyboard/Cursor_Hit.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv .inputSpan {
+   position: absolute;
+   left: 16px;
+   z-index: 1;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv .highlightedSpan {
+   position: absolute;
+   height: 35px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.fiveTen {
+   width: 656px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.fiveTen .inputSpan {
+   top: 12px;
+   float: left;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.fiveTen .highlightedSpan {
+   position: absolute;
+   background: url("../images/keyboard/Char_Input_Opt_BG.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.fiveTen .caret {
+   top: 12px;
+   left: 16px;
+   height: 38px;
+   z-index: 2;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.fiveTen #coverLeft {
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.fiveTen #coverRight {
+   left: 688px;
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.fiveTen #fadeLeft {
+   height: 59px;
+   left: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.fiveTen #fadeRight {
+   left: 660px;
+   height: 59px;
+   transform: rotate(180deg);
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTen {
+   width: 656px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTen .inputSpan {
+   top: 12px;
+   float: left;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTen .highlightedSpan {
+   position: absolute;
+   background: url("../images/keyboard/Char_Input_Opt_BG.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTen .caret {
+   top: 12px;
+   left: 16px;
+   height: 38px;
+   z-index: 2;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTen #coverLeft {
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTen #coverRight {
+   left: 688px;
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTen #fadeLeft {
+   height: 59px;
+   left: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTen #fadeRight {
+   left: 660px;
+   height: 59px;
+   transform: rotate(180deg);
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTwelve {
+   width: 656px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTwelve .inputSpan {
+   top: 12px;
+   float: left;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTwelve .highlightedSpan {
+   position: absolute;
+   background: url("../images/keyboard/Char_Input_Opt_BG.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTwelve .caret {
+   top: 12px;
+   left: 16px;
+   height: 38px;
+   z-index: 2;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTwelve #coverLeft {
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTwelve #coverRight {
+   left: 688px;
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTwelve #fadeLeft {
+   height: 59px;
+   left: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.sixTwelve #fadeRight {
+   left: 660px;
+   height: 59px;
+   transform: rotate(180deg);
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggFiveTen {
+   width: 656px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggFiveTen .inputSpan {
+   top: 12px;
+   float: left;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggFiveTen .highlightedSpan {
+   position: absolute;
+   background: url("../images/keyboard/Char_Input_Opt_BG.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggFiveTen .caret {
+   top: 12px;
+   left: 16px;
+   height: 38px;
+   z-index: 2;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggFiveTen #coverLeft {
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggFiveTen #coverRight {
+   left: 688px;
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggFiveTen #fadeLeft {
+   height: 59px;
+   left: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggFiveTen #fadeRight {
+   left: 660px;
+   height: 59px;
+   transform: rotate(180deg);
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenTen {
+   width: 656px;
+   padding: 9px 16px;
+   height: 41px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenTen .inputSpan {
+   top: 12px;
+   float: left;
+   top: 9px;
+   height: 41px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenTen .highlightedSpan {
+   position: absolute;
+   background: url("../images/keyboard/Char_Input_Opt_BG.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   top: 9px;
+   height: 41px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenTen .caret {
+   top: 12px;
+   left: 16px;
+   height: 38px;
+   z-index: 2;
+   top: 9px;
+   height: 41px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenTen #coverLeft {
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenTen #coverRight {
+   left: 688px;
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenTen #fadeLeft {
+   height: 59px;
+   left: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenTen #fadeRight {
+   left: 660px;
+   height: 59px;
+   transform: rotate(180deg);
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenEleven {
+   width: 656px;
+   padding: 9px 16px;
+   height: 41px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenEleven .inputSpan {
+   top: 12px;
+   float: left;
+   top: 9px;
+   height: 41px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenEleven .highlightedSpan {
+   position: absolute;
+   background: url("../images/keyboard/Char_Input_Opt_BG.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   top: 9px;
+   height: 41px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenEleven .caret {
+   top: 12px;
+   left: 16px;
+   height: 38px;
+   z-index: 2;
+   top: 9px;
+   height: 41px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenEleven #coverLeft {
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenEleven #coverRight {
+   left: 688px;
+   height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenEleven #fadeLeft {
+   height: 59px;
+   left: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.suggSevenEleven #fadeRight {
+   left: 660px;
+   height: 59px;
+   transform: rotate(180deg);
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputBoxTouchActiveArea.disabled {
+   background: url("../images/keyboard/Char_Input.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputBoxTouchActiveArea.focused {
+   background: url("../images/keyboard/Char_Input_Focus.png"), url("../images/keyboard/Char_Input.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputBoxTouchActiveArea.activeState {
+   background: url("../images/keyboard/Char_Input_Hit.png"), url("../images/keyboard/Char_Input.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv .inputSpan.placeholder {
+   color: #c8c8c8;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .inputDiv.disabled {
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen {
+   position: absolute;
+   height: 59px;
+   width: 768px;
+   top: 67px;
+   left: 5px;
+   line-height: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .suggestionArrow {
+   position: absolute;
+   top: 0%;
+   height: 0px;
+   width: 75px;
+   z-index: 1;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen #arrowLeft {
+   left: 0%;
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen #arrowRight {
+   right: 0%;
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .disabled#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .focused#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .activeState#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .disabled#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .focused#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .activeState#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .suggestionBgDiv {
+   position: absolute;
+   top: 0%;
+   width: 614px;
+   background: url("../images/keyboard/CharConv_Bg.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   overflow: hidden;
+   white-space: nowrap;
+   max-height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .suggestionBgDiv .suggestionWrapper {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .suggestionBgDiv .suggestionWrapper .caret {
+   position: absolute;
+   width: 2px;
+   top: 4px;
+   left: 16px;
+   height: 38px;
+   z-index: 2;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .suggestionBgDiv .suggestionWrapper .suggestionSpan {
+   display: inline-block;
+   height: 58px;
+   top: 0%;
+   min-width: 61px;
+   color: white;
+   background: url("../images/keyboard/CharConv_Divider.png") no-repeat right top;
+   padding: 0px 8px;
+   vertical-align: top;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.disabled {
+   background: #404040 no-repeat right top;
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.focused {
+   background: url("../images/keyboard/Char_Input_Focus.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.activeState {
+   background: url("../images/keyboard/Char_Input_Hit.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.fiveTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.hidden {
+   display: none;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen {
+   position: absolute;
+   height: 59px;
+   width: 768px;
+   top: 66px;
+   left: 5px;
+   line-height: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .suggestionArrow {
+   position: absolute;
+   top: 0%;
+   height: 0px;
+   width: 75px;
+   z-index: 1;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen #arrowLeft {
+   left: 0%;
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen #arrowRight {
+   right: 0%;
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .disabled#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .focused#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .activeState#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .disabled#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .focused#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .activeState#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .suggestionBgDiv {
+   position: absolute;
+   top: 0%;
+   width: 614px;
+   background: url("../images/keyboard/CharConv_Bg.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   overflow: hidden;
+   white-space: nowrap;
+   max-height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .suggestionBgDiv .suggestionWrapper {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .suggestionBgDiv .suggestionWrapper .caret {
+   position: absolute;
+   width: 2px;
+   top: 4px;
+   left: 16px;
+   height: 38px;
+   z-index: 2;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .suggestionBgDiv .suggestionWrapper .suggestionSpan {
+   display: inline-block;
+   height: 58px;
+   top: 0%;
+   min-width: 61px;
+   color: white;
+   background: url("../images/keyboard/CharConv_Divider.png") no-repeat right top;
+   padding: 0px 8px;
+   vertical-align: top;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.disabled {
+   background: #404040 no-repeat right top;
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.focused {
+   background: url("../images/keyboard/Char_Input_Focus.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.activeState {
+   background: url("../images/keyboard/Char_Input_Hit.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.hidden {
+   display: none;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve {
+   position: absolute;
+   height: 59px;
+   width: 768px;
+   top: 66px;
+   left: 5px;
+   line-height: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .suggestionArrow {
+   position: absolute;
+   top: 0%;
+   height: 0px;
+   width: 75px;
+   z-index: 1;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve #arrowLeft {
+   left: 0%;
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve #arrowRight {
+   right: 0%;
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .disabled#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .focused#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .activeState#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .disabled#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .focused#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .activeState#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .suggestionBgDiv {
+   position: absolute;
+   top: 0%;
+   width: 614px;
+   background: url("../images/keyboard/CharConv_Bg.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   overflow: hidden;
+   white-space: nowrap;
+   max-height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .suggestionBgDiv .suggestionWrapper {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .suggestionBgDiv .suggestionWrapper .caret {
+   position: absolute;
+   width: 2px;
+   top: 4px;
+   left: 16px;
+   height: 38px;
+   z-index: 2;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .suggestionBgDiv .suggestionWrapper .suggestionSpan {
+   display: inline-block;
+   height: 58px;
+   top: 0%;
+   min-width: 61px;
+   color: white;
+   background: url("../images/keyboard/CharConv_Divider.png") no-repeat right top;
+   padding: 0px 8px;
+   vertical-align: top;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .suggestionBgDiv .suggestionWrapper .suggestionSpan.disabled {
+   background: #404040 no-repeat right top;
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .suggestionBgDiv .suggestionWrapper .suggestionSpan.focused {
+   background: url("../images/keyboard/Char_Input_Focus.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .suggestionBgDiv .suggestionWrapper .suggestionSpan.activeState {
+   background: url("../images/keyboard/Char_Input_Hit.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.sixTwelve .suggestionBgDiv .suggestionWrapper .suggestionSpan.hidden {
+   display: none;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen {
+   position: absolute;
+   height: 59px;
+   width: 767px;
+   top: 67px;
+   left: 5px;
+   line-height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .suggestionArrow {
+   position: absolute;
+   top: 0%;
+   height: 59px;
+   width: 75px;
+   z-index: 1;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen #arrowLeft {
+   left: 0%;
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen #arrowRight {
+   right: 0%;
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .disabled#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .focused#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .activeState#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .disabled#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .focused#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .activeState#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .suggestionBgDiv {
+   position: absolute;
+   top: 0%;
+   width: 613px;
+   background: url("../images/keyboard/CharConv_Bg.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   overflow: hidden;
+   white-space: nowrap;
+   max-height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .suggestionBgDiv .suggestionWrapper {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .suggestionBgDiv .suggestionWrapper .caret {
+   position: absolute;
+   width: 2px;
+   top: 4px;
+   left: 16px;
+   height: 38px;
+   z-index: 2;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .suggestionBgDiv .suggestionWrapper .suggestionSpan {
+   display: inline-block;
+   height: 58px;
+   top: 0%;
+   min-width: 61px;
+   color: white;
+   background: url("../images/keyboard/CharConv_Divider.png") no-repeat right top;
+   padding: 0px 8px;
+   vertical-align: top;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.disabled {
+   background: #404040 no-repeat right top;
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.focused {
+   background: url("../images/keyboard/Char_Input_Focus.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.activeState {
+   background: url("../images/keyboard/Char_Input_Hit.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggFiveTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.hidden {
+   display: none;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen {
+   position: absolute;
+   height: 59px;
+   width: 768px;
+   top: 66px;
+   left: 5px;
+   line-height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .suggestionArrow {
+   position: absolute;
+   top: 0%;
+   height: 59px;
+   width: 75px;
+   z-index: 1;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen #arrowLeft {
+   left: 0%;
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen #arrowRight {
+   right: 0%;
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .disabled#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .focused#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .activeState#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .disabled#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .focused#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .activeState#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .suggestionBgDiv {
+   position: absolute;
+   top: 0%;
+   width: 614px;
+   background: url("../images/keyboard/CharConv_Bg.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   overflow: hidden;
+   white-space: nowrap;
+   max-height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .suggestionBgDiv .suggestionWrapper {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .suggestionBgDiv .suggestionWrapper .caret {
+   position: absolute;
+   width: 2px;
+   top: 4px;
+   left: 16px;
+   height: 38px;
+   z-index: 2;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .suggestionBgDiv .suggestionWrapper .suggestionSpan {
+   display: inline-block;
+   height: 58px;
+   top: 0%;
+   min-width: 61px;
+   color: white;
+   background: url("../images/keyboard/CharConv_Divider.png") no-repeat right top;
+   padding: 0px 8px;
+   vertical-align: top;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.disabled {
+   background: #404040 no-repeat right top;
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.focused {
+   background: url("../images/keyboard/Char_Input_Focus.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.activeState {
+   background: url("../images/keyboard/Char_Input_Hit.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenTen .suggestionBgDiv .suggestionWrapper .suggestionSpan.hidden {
+   display: none;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven {
+   position: absolute;
+   height: 59px;
+   width: 768px;
+   top: 66px;
+   left: 5px;
+   line-height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .suggestionArrow {
+   position: absolute;
+   top: 0%;
+   height: 59px;
+   width: 75px;
+   z-index: 1;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven #arrowLeft {
+   left: 0%;
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven #arrowRight {
+   right: 0%;
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .disabled#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .focused#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .activeState#arrowLeft {
+   background: url("../images/keyboard/Icn_Bck.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .disabled#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .focused#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .activeState#arrowRight {
+   background: url("../images/keyboard/Icn_Fwd.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .suggestionBgDiv {
+   position: absolute;
+   top: 0%;
+   width: 614px;
+   background: url("../images/keyboard/CharConv_Bg.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   overflow: hidden;
+   white-space: nowrap;
+   max-height: 59px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .suggestionBgDiv .suggestionWrapper {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .suggestionBgDiv .suggestionWrapper .caret {
+   position: absolute;
+   width: 2px;
+   top: 4px;
+   left: 16px;
+   height: 38px;
+   z-index: 2;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .suggestionBgDiv .suggestionWrapper .suggestionSpan {
+   display: inline-block;
+   height: 58px;
+   top: 0%;
+   min-width: 61px;
+   color: white;
+   background: url("../images/keyboard/CharConv_Divider.png") no-repeat right top;
+   padding: 0px 8px;
+   vertical-align: top;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .suggestionBgDiv .suggestionWrapper .suggestionSpan.disabled {
+   background: #404040 no-repeat right top;
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .suggestionBgDiv .suggestionWrapper .suggestionSpan.focused {
+   background: url("../images/keyboard/Char_Input_Focus.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .suggestionBgDiv .suggestionWrapper .suggestionSpan.activeState {
+   background: url("../images/keyboard/Char_Input_Hit.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .suggestionRowWrapper.suggSevenEleven .suggestionBgDiv .suggestionWrapper .suggestionSpan.hidden {
+   display: none;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen {
+   position: absolute;
+   height: 349px;
+   top: 67px;
+   width: 100%;
+   left: 0%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .row {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .row.shifted {
+   left: -38.5px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .btn {
+   display: inline-block;
+   vertical-align: middle;
+   width: 74px;
+   height: 91px;
+   color: white;
+   font-size: 35px;
+   line-height: 91px;
+   background: url("../images/keyboard/Key03.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 3px;
+   margin-bottom: 2px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .btn.disabled {
+   background: url("../images/keyboard/Key03_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .btn.focused {
+   background: url("../images/keyboard/Key03_Focus.png"), url("../images/keyboard/Key03.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .btn.activeState {
+   background: url("../images/keyboard/Key03_Hit.png"), url("../images/keyboard/Key03.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper #btnShift {
+   position: absolute;
+   height: 91px;
+   width: 112px;
+   top: -93px;
+   left: 6px;
+   line-height: 91px;
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key04.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 3px;
+   margin-bottom: 2px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .disabled#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Disabled.png"), url("../images/keyboard/Key04_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .focused#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key04_Focus.png"), url("../images/keyboard/Key04.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .activeState#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key04_Hit.png"), url("../images/keyboard/Key04.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .capsLock#btnShift {
+   position: absolute;
+   height: 91px;
+   width: 112px;
+   top: -93px;
+   left: 6px;
+   line-height: 91px;
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key04.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 3px;
+   margin-bottom: 2px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .capsLock.disabled#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Disabled.png"), url("../images/keyboard/Key04_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .capsLock.focused#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key04_Focus.png"), url("../images/keyboard/Key04.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .capsLock.activeState#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key04_Hit.png"), url("../images/keyboard/Key04.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .noIcon#btnShift {
+   position: absolute;
+   height: 91px;
+   width: 112px;
+   top: -93px;
+   left: 6px;
+   line-height: 91px;
+   background: url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 3px;
+   margin-bottom: 2px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .noIcon.disabled#btnShift {
+   background: url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .noIcon.focused#btnShift {
+   background: url("../images/keyboard/Key09_Focus.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .noIcon.activeState#btnShift {
+   background: url("../images/keyboard/Key09_Hit.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper #btnLayoutSwitch {
+   position: absolute;
+   height: 91px;
+   width: 112px;
+   top: -93px;
+   right: 5px;
+   line-height: 91px;
+   background: url("../images/keyboard/Key04.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 3px;
+   margin-bottom: 2px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .disabled#btnLayoutSwitch {
+   background: url("../images/keyboard/Key04_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .focused#btnLayoutSwitch {
+   background: url("../images/keyboard/Key04_Focus.png"), url("../images/keyboard/Key04.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .activeState#btnLayoutSwitch {
+   background: url("../images/keyboard/Key04_Hit.png"), url("../images/keyboard/Key04.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .smallText#btnLayoutSwitch {
+   font-size: 21px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper #btnCancel {
+   height: 64px;
+   width: 93px;
+   line-height: 64px;
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 3px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .disabled#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_Ds.png"), url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .focused#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14_Focus.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .activeState#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14_Hit.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper #btnSpacebar {
+   width: 511px;
+   height: 64px;
+   line-height: 64px;
+   background: url("../images/keyboard/KeySpace01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 3px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .disabled#btnSpacebar {
+   background: url("../images/keyboard/Key13_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .focused#btnSpacebar {
+   background: url("../images/keyboard/KeySpace01_Focus.png"), url("../images/keyboard/KeySpace01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .activeState#btnSpacebar {
+   background: url("../images/keyboard/KeySpace01_Hit.png"), url("../images/keyboard/KeySpace01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper #btnOK {
+   height: 64px;
+   width: 93px;
+   line-height: 64px;
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 3px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .disabled#btnOK {
+   background: url("../images/keyboard/Icn_Send_Ds.png"), url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .focused#btnOK {
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key14_Focus.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .activeState#btnOK {
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key14_Hit.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper #btnGlobe {
+   height: 64px;
+   width: 62px;
+   line-height: 64px;
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key06.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 3px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .disabled#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe_Ds.png"), url("../images/keyboard/Key06_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .focused#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key06_Focus.png"), url("../images/keyboard/Key06.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .activeState#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key06_Hit.png"), url("../images/keyboard/Key06.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper #btnMod {
+   height: 46px;
+   width: 75px;
+   line-height: 46px;
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 3px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .focused#btnMod {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper #btnMod:active {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .activeState#btnMod {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .disabled#btnMod {
+   background: url("../images/keyboard/Icn_Small_Ds.png"), url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .KeyboardCtrlDeleteBtn_En {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -340px;
+   line-height: 59px;
+   margin-right: 3px;
+   margin-bottom: 2px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .KeyboardCtrlDeleteBtn_Ds {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -340px;
+   line-height: 59px;
+   margin-right: 3px;
+   margin-bottom: 2px;
+   background: url("../images/keyboard/Delete_Btn_Ds.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .KeyboardCtrlDeleteBtn_Fs {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -340px;
+   line-height: 59px;
+   margin-right: 3px;
+   margin-bottom: 2px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .KeyboardCtrlDeleteBtn_Dwn {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -340px;
+   line-height: 59px;
+   margin-right: 3px;
+   margin-bottom: 2px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.fiveTen .controlsWrapper .KeyboardCtrlDeleteBtn_Hd {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -340px;
+   line-height: 59px;
+   margin-right: 3px;
+   margin-bottom: 2px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen {
+   position: absolute;
+   height: 350px;
+   top: 66px;
+   width: 100%;
+   left: 0%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .row {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .row.shifted {
+   left: -38.5px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .btn {
+   display: inline-block;
+   vertical-align: middle;
+   width: 75px;
+   height: 68px;
+   color: white;
+   font-size: 35px;
+   line-height: 68px;
+   background: url("../images/keyboard/Key10.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .btn.disabled {
+   background: url("../images/keyboard/Key10_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .btn.focused {
+   background: url("../images/keyboard/Key10_Focus.png"), url("../images/keyboard/Key10.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .btn.activeState {
+   background: url("../images/keyboard/Key10_Hit.png"), url("../images/keyboard/Key10.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper #btnShift {
+   position: absolute;
+   height: 68px;
+   width: 113px;
+   top: -69px;
+   left: 6px;
+   line-height: 68px;
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key11.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .disabled#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Disabled.png"), url("../images/keyboard/Key11_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .focused#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key11_Focus.png"), url("../images/keyboard/Key11.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .activeState#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key11_Hit.png"), url("../images/keyboard/Key11.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .capsLock#btnShift {
+   position: absolute;
+   height: 68px;
+   width: 113px;
+   top: -69px;
+   left: 6px;
+   line-height: 68px;
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key11.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .capsLock.disabled#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Disabled.png"), url("../images/keyboard/Key11_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .capsLock.focused#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key11_Focus.png"), url("../images/keyboard/Key11.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .capsLock.activeState#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key11_Hit.png"), url("../images/keyboard/Key11.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .noIcon#btnShift {
+   position: absolute;
+   height: 68px;
+   width: 113px;
+   top: -69px;
+   left: 6px;
+   line-height: 68px;
+   background: url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .noIcon.disabled#btnShift {
+   background: url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .noIcon.focused#btnShift {
+   background: url("../images/keyboard/Key09_Focus.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .noIcon.activeState#btnShift {
+   background: url("../images/keyboard/Key09_Hit.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper #btnLayoutSwitch {
+   position: absolute;
+   height: 68px;
+   width: 113px;
+   top: -69px;
+   right: 5px;
+   line-height: 68px;
+   background: url("../images/keyboard/Key11.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .disabled#btnLayoutSwitch {
+   background: url("../images/keyboard/Key11_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .focused#btnLayoutSwitch {
+   background: url("../images/keyboard/Key11_Focus.png"), url("../images/keyboard/Key11.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .activeState#btnLayoutSwitch {
+   background: url("../images/keyboard/Key11_Hit.png"), url("../images/keyboard/Key11.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .smallText#btnLayoutSwitch {
+   font-size: 21px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper #btnCancel {
+   height: 64px;
+   width: 93px;
+   line-height: 64px;
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .disabled#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_Ds.png"), url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .focused#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14_Focus.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .activeState#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14_Hit.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper #btnSpacebar {
+   width: 511px;
+   height: 64px;
+   line-height: 64px;
+   background: url("../images/keyboard/KeySpace01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .disabled#btnSpacebar {
+   background: url("../images/keyboard/Key13_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .focused#btnSpacebar {
+   background: url("../images/keyboard/KeySpace01_Focus.png"), url("../images/keyboard/KeySpace01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .activeState#btnSpacebar {
+   background: url("../images/keyboard/KeySpace01_Hit.png"), url("../images/keyboard/KeySpace01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper #btnOK {
+   height: 64px;
+   width: 93px;
+   line-height: 64px;
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .disabled#btnOK {
+   background: url("../images/keyboard/Icn_Send_Ds.png"), url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .focused#btnOK {
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key14_Focus.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .activeState#btnOK {
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key14_Hit.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper #btnGlobe {
+   height: 64px;
+   width: 62px;
+   line-height: 64px;
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key06.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .disabled#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe_Ds.png"), url("../images/keyboard/Key06_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .focused#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key06_Focus.png"), url("../images/keyboard/Key06.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .activeState#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key06_Hit.png"), url("../images/keyboard/Key06.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper #btnMod {
+   height: 46px;
+   width: 75px;
+   line-height: 46px;
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .focused#btnMod {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper #btnMod:active {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .activeState#btnMod {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .disabled#btnMod {
+   background: url("../images/keyboard/Icn_Small_Ds.png"), url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .KeyboardCtrlDeleteBtn_En {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -336px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .KeyboardCtrlDeleteBtn_Ds {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -336px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_Ds.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .KeyboardCtrlDeleteBtn_Fs {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -336px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .KeyboardCtrlDeleteBtn_Dwn {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -336px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTen .controlsWrapper .KeyboardCtrlDeleteBtn_Hd {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -336px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve {
+   position: absolute;
+   height: 350px;
+   top: 66px;
+   width: 100%;
+   left: 0%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .row {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .row.shifted {
+   left: -32px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .btn {
+   display: inline-block;
+   vertical-align: middle;
+   width: 62px;
+   height: 68px;
+   color: white;
+   font-size: 35px;
+   line-height: 68px;
+   background: url("../images/keyboard/Key01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .btn.disabled {
+   background: url("../images/keyboard/Key01_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .btn.focused {
+   background: url("../images/keyboard/Key01_Focus.png"), url("../images/keyboard/Key01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .btn.activeState {
+   background: url("../images/keyboard/Key01_Hit.png"), url("../images/keyboard/Key01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper #btnShift {
+   position: absolute;
+   height: 68px;
+   width: 94px;
+   top: -69px;
+   left: 6px;
+   line-height: 68px;
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .disabled#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Disabled.png"), url("../images/keyboard/Key02_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .focused#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key02_Focus.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .activeState#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key02_Hit.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .capsLock#btnShift {
+   position: absolute;
+   height: 68px;
+   width: 94px;
+   top: -69px;
+   left: 6px;
+   line-height: 68px;
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .capsLock.disabled#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Disabled.png"), url("../images/keyboard/Key02_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .capsLock.focused#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key02_Focus.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .capsLock.activeState#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key02_Hit.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .noIcon#btnShift {
+   position: absolute;
+   height: 68px;
+   width: 94px;
+   top: -69px;
+   left: 6px;
+   line-height: 68px;
+   background: url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .noIcon.disabled#btnShift {
+   background: url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .noIcon.focused#btnShift {
+   background: url("../images/keyboard/Key09_Focus.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .noIcon.activeState#btnShift {
+   background: url("../images/keyboard/Key09_Hit.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper #btnLayoutSwitch {
+   position: absolute;
+   height: 68px;
+   width: 94px;
+   top: -69px;
+   right: 5px;
+   line-height: 68px;
+   background: url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .disabled#btnLayoutSwitch {
+   background: url("../images/keyboard/Key02_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .focused#btnLayoutSwitch {
+   background: url("../images/keyboard/Key02_Focus.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .activeState#btnLayoutSwitch {
+   background: url("../images/keyboard/Key02_Hit.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .smallText#btnLayoutSwitch {
+   font-size: 21px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper #btnCancel {
+   height: 64px;
+   width: 93px;
+   line-height: 64px;
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .disabled#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_Ds.png"), url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .focused#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14_Focus.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .activeState#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14_Hit.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper #btnSpacebar {
+   width: 511px;
+   height: 64px;
+   line-height: 64px;
+   background: url("../images/keyboard/KeySpace01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .disabled#btnSpacebar {
+   background: url("../images/keyboard/Key13_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .focused#btnSpacebar {
+   background: url("../images/keyboard/KeySpace01_Focus.png"), url("../images/keyboard/KeySpace01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .activeState#btnSpacebar {
+   background: url("../images/keyboard/KeySpace01_Hit.png"), url("../images/keyboard/KeySpace01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper #btnOK {
+   height: 64px;
+   width: 93px;
+   line-height: 64px;
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .disabled#btnOK {
+   background: url("../images/keyboard/Icn_Send_Ds.png"), url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .focused#btnOK {
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key14_Focus.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .activeState#btnOK {
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key14_Hit.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper #btnGlobe {
+   height: 64px;
+   width: 62px;
+   line-height: 64px;
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key06.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .disabled#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe_Ds.png"), url("../images/keyboard/Key06_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .focused#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key06_Focus.png"), url("../images/keyboard/Key06.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .activeState#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key06_Hit.png"), url("../images/keyboard/Key06.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper #btnMod {
+   height: 46px;
+   width: 75px;
+   line-height: 46px;
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .focused#btnMod {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper #btnMod:active {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .activeState#btnMod {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .disabled#btnMod {
+   background: url("../images/keyboard/Icn_Small_Ds.png"), url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .KeyboardCtrlDeleteBtn_En {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -336px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .KeyboardCtrlDeleteBtn_Ds {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -336px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_Ds.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .KeyboardCtrlDeleteBtn_Fs {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -336px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .KeyboardCtrlDeleteBtn_Dwn {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -336px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.sixTwelve .controlsWrapper .KeyboardCtrlDeleteBtn_Hd {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -336px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen {
+   position: absolute;
+   height: 288px;
+   top: 128px;
+   width: 100%;
+   left: 0%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .row {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .row.shifted {
+   left: -38.5px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .btn {
+   display: inline-block;
+   vertical-align: middle;
+   width: 75px;
+   height: 71px;
+   color: white;
+   font-size: 35px;
+   line-height: 71px;
+   background: url("../images/keyboard/Key05.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 2px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .btn.disabled {
+   background: url("../images/keyboard/Key05_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .btn.focused {
+   background: url("../images/keyboard/Key05_Focus.png"), url("../images/keyboard/Key05.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .btn.activeState {
+   background: url("../images/keyboard/Key05_Hit.png"), url("../images/keyboard/Key05.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .btn.lastRow {
+   height: 70px;
+   width: 67px;
+   background: url("../images/keyboard/Key08.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 1px;
+   margin-bottom: 2px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .btn.lastRow.disabled {
+   background: url("../images/keyboard/Key08_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   color: #555;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .btn.lastRow.focused {
+   background: url("../images/keyboard/Key08_Focus.png"), url("../images/keyboard/Key08.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .btn.lastRow.activeState {
+   background: url("../images/keyboard/Key08_Hit.png"), url("../images/keyboard/Key08.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper #btnShift {
+   position: absolute;
+   height: 70px;
+   width: 108px;
+   top: -73px;
+   left: 6px;
+   line-height: 70px;
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 2px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .disabled#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Disabled.png"), url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .focused#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key09_Focus.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .activeState#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key09_Hit.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .capsLock#btnShift {
+   position: absolute;
+   height: 70px;
+   width: 108px;
+   top: -73px;
+   left: 6px;
+   line-height: 70px;
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 2px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .capsLock.disabled#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Disabled.png"), url("../images/keyboard/Key02_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .capsLock.focused#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key02_Focus.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .capsLock.activeState#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key02_Hit.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .noIcon#btnShift {
+   position: absolute;
+   height: 70px;
+   width: 108px;
+   top: -73px;
+   left: 6px;
+   line-height: 70px;
+   background: url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 2px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .noIcon.disabled#btnShift {
+   background: url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .noIcon.focused#btnShift {
+   background: url("../images/keyboard/Key09_Focus.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .noIcon.activeState#btnShift {
+   background: url("../images/keyboard/Key09_Hit.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper #btnLayoutSwitch {
+   position: absolute;
+   height: 70px;
+   width: 108px;
+   top: -73px;
+   right: 5px;
+   line-height: 70px;
+   background: url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 2px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .disabled#btnLayoutSwitch {
+   background: url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .focused#btnLayoutSwitch {
+   background: url("../images/keyboard/Key09_Focus.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .activeState#btnLayoutSwitch {
+   background: url("../images/keyboard/Key09_Hit.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .smallText#btnLayoutSwitch {
+   font-size: 21px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper #btnCancel {
+   height: 64px;
+   width: 93px;
+   line-height: 64px;
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .disabled#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_Ds.png"), url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .focused#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14_Focus.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .activeState#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key14_Hit.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper #btnSpacebar {
+   width: 511px;
+   height: 64px;
+   line-height: 64px;
+   background: url("../images/keyboard/KeySpace01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .disabled#btnSpacebar {
+   background: url("../images/keyboard/Key13_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .focused#btnSpacebar {
+   background: url("../images/keyboard/KeySpace01_Focus.png"), url("../images/keyboard/KeySpace01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .activeState#btnSpacebar {
+   background: url("../images/keyboard/KeySpace01_Hit.png"), url("../images/keyboard/KeySpace01.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper #btnOK {
+   height: 64px;
+   width: 93px;
+   line-height: 64px;
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .disabled#btnOK {
+   background: url("../images/keyboard/Icn_Send_Ds.png"), url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .focused#btnOK {
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key14_Focus.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .activeState#btnOK {
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key14_Hit.png"), url("../images/keyboard/Key14.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper #btnGlobe {
+   height: 64px;
+   width: 62px;
+   line-height: 64px;
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key06.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .disabled#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe_Ds.png"), url("../images/keyboard/Key06_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .focused#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key06_Focus.png"), url("../images/keyboard/Key06.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .activeState#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key06_Hit.png"), url("../images/keyboard/Key06.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper #btnMod {
+   height: 46px;
+   width: 75px;
+   line-height: 46px;
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .focused#btnMod {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper #btnMod:active {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .activeState#btnMod {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .disabled#btnMod {
+   background: url("../images/keyboard/Icn_Small_Ds.png"), url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .KeyboardCtrlDeleteBtn_En {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -353px;
+   top: -341px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 2px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .KeyboardCtrlDeleteBtn_Ds {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -353px;
+   top: -341px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 2px;
+   background: url("../images/keyboard/Delete_Btn_Ds.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .KeyboardCtrlDeleteBtn_Fs {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -353px;
+   top: -341px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 2px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .KeyboardCtrlDeleteBtn_Dwn {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -353px;
+   top: -341px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 2px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggFiveTen .controlsWrapper .KeyboardCtrlDeleteBtn_Hd {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -353px;
+   top: -341px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 2px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen {
+   position: absolute;
+   height: 290px;
+   top: 126px;
+   width: 100%;
+   left: 0%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .row {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .row.shifted {
+   left: -38.5px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .btn {
+   display: inline-block;
+   vertical-align: middle;
+   width: 75px;
+   height: 46px;
+   color: white;
+   font-size: 35px;
+   line-height: 46px;
+   background: url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .btn.disabled {
+   background: url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .btn.focused {
+   background: url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .btn.activeState {
+   background: url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper #btnShift {
+   position: absolute;
+   height: 46px;
+   width: 75px;
+   top: -47px;
+   left: 6px;
+   line-height: 46px;
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .disabled#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Disabled.png"), url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .focused#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .activeState#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .capsLock#btnShift {
+   position: absolute;
+   height: 46px;
+   width: 75px;
+   top: -47px;
+   left: 6px;
+   line-height: 46px;
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .capsLock.disabled#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Disabled.png"), url("../images/keyboard/Key02_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .capsLock.focused#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key02_Focus.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .capsLock.activeState#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key02_Hit.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .noIcon#btnShift {
+   position: absolute;
+   height: 46px;
+   width: 75px;
+   top: -47px;
+   left: 6px;
+   line-height: 46px;
+   background: url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .noIcon.disabled#btnShift {
+   background: url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .noIcon.focused#btnShift {
+   background: url("../images/keyboard/Key09_Focus.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .noIcon.activeState#btnShift {
+   background: url("../images/keyboard/Key09_Hit.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper #btnLayoutSwitch {
+   position: absolute;
+   height: 46px;
+   width: 75px;
+   top: -47px;
+   right: 5px;
+   line-height: 46px;
+   background: url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .disabled#btnLayoutSwitch {
+   background: url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .focused#btnLayoutSwitch {
+   background: url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .activeState#btnLayoutSwitch {
+   background: url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .smallText#btnLayoutSwitch {
+   font-size: 21px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper #btnCancel {
+   height: 46px;
+   width: 75px;
+   line-height: 46px;
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .disabled#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_Ds.png"), url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .focused#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .activeState#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper #btnSpacebar {
+   width: 460px;
+   height: 46px;
+   line-height: 46px;
+   background: url("../images/keyboard/KeySpace02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .disabled#btnSpacebar {
+   background: url("../images/keyboard/Key13_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .focused#btnSpacebar {
+   background: url("../images/keyboard/KeySpace02_Focus.png"), url("../images/keyboard/KeySpace02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .activeState#btnSpacebar {
+   background: url("../images/keyboard/KeySpace02_Hit.png"), url("../images/keyboard/KeySpace02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper #btnOK {
+   height: 46px;
+   width: 75px;
+   line-height: 46px;
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .disabled#btnOK {
+   background: url("../images/keyboard/Icn_Send_Ds.png"), url("../images/keyboard/Key07_Dead.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .focused#btnOK {
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .activeState#btnOK {
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key07_Hit.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper #btnGlobe {
+   height: 46px;
+   width: 75px;
+   line-height: 46px;
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .disabled#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe_Ds.png"), url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .focused#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .activeState#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper #btnMod {
+   height: 46px;
+   width: 75px;
+   line-height: 46px;
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .focused#btnMod {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper #btnMod:active {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .activeState#btnMod {
+   background: url("../images/keyboard/Icn_Small_En.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .disabled#btnMod {
+   background: url("../images/keyboard/Icn_Small_Ds.png"), url("../images/keyboard/Key07_Dead.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .KeyboardCtrlDeleteBtn_En {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -342px;
+   top: -355px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .KeyboardCtrlDeleteBtn_Ds {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -342px;
+   top: -355px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_Ds.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .KeyboardCtrlDeleteBtn_Fs {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -342px;
+   top: -355px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .KeyboardCtrlDeleteBtn_Dwn {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -342px;
+   top: -355px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenTen .controlsWrapper .KeyboardCtrlDeleteBtn_Hd {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -342px;
+   top: -355px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven {
+   position: absolute;
+   height: 290px;
+   top: 126px;
+   width: 100%;
+   left: 0%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .row {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .row.shifted {
+   left: -35px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .btn {
+   display: inline-block;
+   vertical-align: middle;
+   width: 68px;
+   height: 46px;
+   color: white;
+   font-size: 35px;
+   line-height: 46px;
+   background: url("../images/keyboard/Key15.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .btn.disabled {
+   background: url("../images/keyboard/Key15_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .btn.focused {
+   background: url("../images/keyboard/Key15_Focus.png"), url("../images/keyboard/Key15.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .btn.activeState {
+   background: url("../images/keyboard/Key15_Hit.png"), url("../images/keyboard/Key15.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .btnExtended {
+   display: inline-block;
+   vertical-align: middle;
+   width: 75px;
+   height: 46px;
+   color: white;
+   font-size: 35px;
+   line-height: 46px;
+   background: url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .btnExtended.disabled {
+   background: url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   color: #929497;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .btnExtended.focused {
+   background: url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .btnExtended.activeState {
+   background: url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper {
+   position: relative;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper #btnShift {
+   position: absolute;
+   height: 46px;
+   width: 75px;
+   top: -47px;
+   left: 6px;
+   line-height: 46px;
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key15.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .disabled#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Disabled.png"), url("../images/keyboard/Key15_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .focused#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key15_Focus.png"), url("../images/keyboard/Key15.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .activeState#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Off.png"), url("../images/keyboard/Key15_Hit.png"), url("../images/keyboard/Key15.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .capsLock#btnShift {
+   position: absolute;
+   height: 46px;
+   width: 75px;
+   top: -47px;
+   left: 6px;
+   line-height: 46px;
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .capsLock.disabled#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_Disabled.png"), url("../images/keyboard/Key02_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .capsLock.focused#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key02_Focus.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .capsLock.activeState#btnShift {
+   background: url("../images/keyboard/IcnKbdShift_On.png"), url("../images/keyboard/Key02_Hit.png"), url("../images/keyboard/Key02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .noIcon#btnShift {
+   position: absolute;
+   height: 46px;
+   width: 75px;
+   top: -47px;
+   left: 6px;
+   line-height: 46px;
+   background: url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .noIcon.disabled#btnShift {
+   background: url("../images/keyboard/Key09_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .noIcon.focused#btnShift {
+   background: url("../images/keyboard/Key09_Focus.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .noIcon.activeState#btnShift {
+   background: url("../images/keyboard/Key09_Hit.png"), url("../images/keyboard/Key09.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper #btnLayoutSwitch {
+   position: absolute;
+   height: 46px;
+   width: 75px;
+   top: -47px;
+   right: 5px;
+   line-height: 46px;
+   background: url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 1px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .disabled#btnLayoutSwitch {
+   background: url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .focused#btnLayoutSwitch {
+   background: url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .activeState#btnLayoutSwitch {
+   background: url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .smallText#btnLayoutSwitch {
+   font-size: 21px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper #btnCancel {
+   height: 46px;
+   width: 75px;
+   line-height: 46px;
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .disabled#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_Ds.png"), url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .focused#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .activeState#btnCancel {
+   background: url("../images/keyboard/Icn_Cancel_En.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper #btnSpacebar {
+   width: 460px;
+   height: 46px;
+   line-height: 46px;
+   background: url("../images/keyboard/KeySpace02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .disabled#btnSpacebar {
+   background: url("../images/keyboard/Key13_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .focused#btnSpacebar {
+   background: url("../images/keyboard/KeySpace02_Focus.png"), url("../images/keyboard/KeySpace02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .activeState#btnSpacebar {
+   background: url("../images/keyboard/KeySpace02_Hit.png"), url("../images/keyboard/KeySpace02.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper #btnOK {
+   height: 46px;
+   width: 75px;
+   line-height: 46px;
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .disabled#btnOK {
+   background: url("../images/keyboard/Icn_Send_Ds.png"), url("../images/keyboard/Key07_Dead.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .focused#btnOK {
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .activeState#btnOK {
+   background: url("../images/keyboard/Icn_Send.png"), url("../images/keyboard/Key07_Hit.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper #btnGlobe {
+   height: 46px;
+   width: 75px;
+   line-height: 46px;
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .disabled#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe_Ds.png"), url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .focused#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .activeState#btnGlobe {
+   background: url("../images/keyboard/Icn_Globe.png"), url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper #btnMod {
+   height: 46px;
+   width: 75px;
+   line-height: 46px;
+   background: url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   margin-right: 2px;
+   margin-bottom: 0px;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .focused#btnMod {
+   background: url("../images/keyboard/Key07_Focus.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper #btnMod:active {
+   background: url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .activeState#btnMod {
+   background: url("../images/keyboard/Key07_Hit.png"), url("../images/keyboard/Key07.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .disabled#btnMod {
+   background: url("../images/keyboard/Key07_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .KeyboardCtrlDeleteBtn_En {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -342px;
+   top: -355px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .KeyboardCtrlDeleteBtn_Ds {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -342px;
+   top: -355px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_Ds.png"), url("../images/keyboard/Key12_Dead.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .KeyboardCtrlDeleteBtn_Fs {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -342px;
+   top: -355px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Focus.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .KeyboardCtrlDeleteBtn_Dwn {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -342px;
+   top: -355px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+ .KeyboardCtrl.KeyboardCtrl_custom .btnWrapper.suggSevenEleven .controlsWrapper .KeyboardCtrlDeleteBtn_Hd {
+   position: absolute;
+   width: 75px;
+   height: 59px;
+   right: 5px;
+   top: -342px;
+   top: -355px;
+   line-height: 59px;
+   margin-right: 2px;
+   margin-bottom: 1px;
+   background: url("../images/keyboard/Delete_Btn_En.png"), url("../images/keyboard/Key12_Hit.png"), url("../images/keyboard/Key12.png");
+   background-position: center;
+   background-repeat: no-repeat;
+ }

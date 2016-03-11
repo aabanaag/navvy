@@ -42,6 +42,12 @@ NavvyCtrl.prototype._loadCSS = function () {
   ltCSS.rel = 'stylesheet';
   ltCSS.href = this._PATH + 'css/leaflet.css';
   this.parentDiv.appendChild(ltCSS);
+
+  var keyboardCSS = document.createElement('link');
+  keyboardCSS.type = 'text/css';
+  keyboardCSS.rel = 'stylesheet';
+  keyboardCSS.href = this._PATH + 'css/KeyboardCtrl.css';
+  this.parentDiv.appendChild(keyboardCSS);
 };
 
 NavvyCtrl.prototype._createContainer = function () {
@@ -60,6 +66,7 @@ NavvyCtrl.prototype.init = function () {
 
   this._createContainer();
   this._loadCSS();
+  this._loadKeyboard();
 
   this._loadMap(function () {
     this._createMap(function () {
@@ -69,6 +76,17 @@ NavvyCtrl.prototype.init = function () {
   }.bind(this));
 
   this._initialized = true;
+};
+
+NavvyCtrl.prototype._loadKeyboard = function () {
+  var js = document.createElement('script');
+  js.type = 'text/javascript';
+  js.src = this._PATH + 'js/KeyboardCtrl.js';
+  js.onload = function () {
+    this.keyboard = new KeyboardCtrl({ el: document.getElementById('mapCtrlSearchContainer') });
+  }.bind(this);
+
+  this.parentDiv.appendChild(js);
 };
 
 NavvyCtrl.prototype._loadMap = function (cb) {
