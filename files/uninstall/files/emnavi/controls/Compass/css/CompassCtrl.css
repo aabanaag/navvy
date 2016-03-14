@@ -1,0 +1,9 @@
+.CompassCtrl {
+  font-family: "Tipperary", Arial, Helvetica, sans-serif;
+  text-align: left;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: url(../images/CompassBg.png) 100% 0% no-repeat;
+  z-index: 0;
+}
