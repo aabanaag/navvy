@@ -551,11 +551,6 @@ emnaviApp.prototype._TimedSbnMsgHandler = function (msg)
         {
             case "Inserted":
                 framework.common.startTimedSbn(this.uiaId, this._emnaviSDCardSbn, "deviceConnected", {sbnStyle: "Style02", text1Id: "SDCradInserted", imagePath1: "IcnSbnSdCard.png"});
-
-                //Added by WunderkindTech Solutions
-                if (this._currentContext && this._currentContextTemplate && this._currentContext.ctxtId == "Compass") {
-                  this._currentContextTemplate.compassCtrl.loadNavvy();
-                }
                 break;
             case "Removed":
                 framework.common.startTimedSbn(this.uiaId, this._emnaviSDCardSbn, "deviceRemoved", {sbnStyle: "Style02", text1Id: "SDCradRemoved", imagePath1: "IcnSbnSdCard.png"});
@@ -712,27 +707,7 @@ emnaviApp.prototype._CurrentLocationInfoMsgHandler = function (msg)
  */
 emnaviApp.prototype._populateCompass = function ()
 {
-    if (this._locationData.isValidInfo !== 0)
-    {
-        this._currentContextTemplate.compassCtrl.setLatitudeId(this._locationData.latUnit, {value: this._locationData.latitude, spacing: " "});
-        this._currentContextTemplate.compassCtrl.setLongitudeId(this._locationData.longUnit, {value: this._locationData.longitude, spacing: " "});
-        this._currentContextTemplate.compassCtrl.setElevationId(this._locationData.eleUnit, {value: this._locationData.elevation, spacing: " "});
-    }
-    else
-    {
-        this._currentContextTemplate.compassCtrl.setLatitude(this._locationData.latitude);
-        this._currentContextTemplate.compassCtrl.setLongitude(this._locationData.longitude);
-        this._currentContextTemplate.compassCtrl.setElevation( this._locationData.elevation);
-    }
-
-    // set compass
-    if ('Invalid' != this._locationData.heading)
-    {
-        this._currentContextTemplate.compassCtrl.setDirection(this._locationData.heading);
-    }
-
-    // set needle
-    this._currentContextTemplate.compassCtrl.setNeedleVisible(this._locationData.showNeedle);
+  this._currentContextTemplate.compassCtrl.setLocationData(this._locationData);
 };
 
 /**

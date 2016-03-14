@@ -1,12 +1,16 @@
 #!/bin/sh
 
-# v0.1
+# v0.2
 # Mazda Philippines
 # Creator: WunderkindTech Solutions
 # Date Modified: 03/11/2016
 # =================================
 #
 # Purpose: Install Navvy via USB
+#
+# CHANGELOG:
+# 3/11/16 - Initial
+# 3/14/16 - Add deleted controls&templates [Fix for Emnavi Navteq bug]
 
 # ALLOW READ | WRITE COMMANDS
 mount -o rw,remount /

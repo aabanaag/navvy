@@ -30,7 +30,7 @@
  v1.4 - (23-May-2014) Update to support the new NNG screens titles for "Navigation" and "Settings" stringIds (SW00149322)
  v1.5 - (11-Jun-2014) J03G: GUI Assets: Asset changes for gui emnavi (Temporary : Green Color) (SW00149885)
  v1.6 - (12-Jun-2014) GUI_EMNAVI: MY15 Graphic Asset Update and Clean Up (SW00150279)
- v1.7 - (07-Nov-2014) GUI_EMNAVI: SW00157407:  [MICWARE] Split Screen does not display USB deviceID
+ v1.7 - (07-Nov-2014) GUI_EMNAVI: SW00157407:  [MICWARE] Split Screen does not display USB deviceID 
  v1.8 - (26-Nov-2014) GUI_EMNAVI: SW00158463:  [MICWARE] GUI_EMNAVI.. Change variable name used in code for GUI emnavi
  v1.9 - (27-Nov-2014) GUI_EMNAVI: SW00158048:  [MICWARE] GUI_EMNAVI.. [JN-208] : "0.0" was displayed after engine start on split screen (Map + aha)
  v2.0 - (28-Nov-2014) GUI_EMNAVI: SW00158443:  PIT - FM radio split screen shows 0.0 when removing currently streaming USB
@@ -96,7 +96,7 @@ emnaviApp.prototype.appInit = function()
         "Album" : null,
     };
     this._cachedAtSpeed = null;
-
+    
     // preparing context stuck handeling
     this._preparingStuckTime = 3000; // 2 sec
     this._preparingStuckTimeoutId = null;
@@ -313,7 +313,7 @@ emnaviApp.prototype.appInit = function()
         "102": "NAVQuickSearch",
         "103": "emnavi",
     };
-
+    
     /* ------------------------------
      * INTERNAL PROPERTIES AND CONFIG
      * ------------------------------
@@ -353,7 +353,7 @@ emnaviApp.prototype._preparingStuckTimedout = function()
     var params = {payload:{}};
     log.info("ENTER : _preparingStuckTimedout");
     this._preparingStuckTimeoutId = null;
-
+    
     // Check current context ID and if it still hasn't change, do recovery recursively.
     if (this._currentContext && this._currentContext.ctxtId === "NaviPreparing")
     {
@@ -386,10 +386,10 @@ emnaviApp.prototype._ActiveCtxtReady = function()
     this._updateSplitScreen();
 };
 
-emnaviApp.prototype._ActiveCtxtInFunction = function()
+emnaviApp.prototype._ActiveCtxtInFunction = function() 
 {
     log.info("ENTER activeContextIn, mediaSource:[" + this._cachedMediaSource + "]");
-    if(this._currentContext.params && this._currentContext.params.payload && this._currentContext.params.payload.ScreenType )
+    if(this._currentContext.params && this._currentContext.params.payload && this._currentContext.params.payload.ScreenType ) 
     {
         this._contextTable.Active.controlProperties.NowPlayingInfoCtrl.visible = this._currentContext.params.payload.ScreenType == "Split" ? true : false;
     }
@@ -413,7 +413,7 @@ emnaviApp.prototype._dialogDefaultSelectCallback = function (dialogBtnCtrlObj, a
     }
 };
 
-emnaviApp.prototype._nowPlayingInfoSelectCallback = function()
+emnaviApp.prototype._nowPlayingInfoSelectCallback = function() 
 {
     log.info('sending IntentNowPlayingScreen');
     framework.sendEventToMmui('emnavi', 'IntentNowPlayingScreen');
@@ -428,11 +428,11 @@ emnaviApp.prototype._SpeedHandler = function(msg)
 {
     log.info("_SpeedHandler called", msg); /*
     this._cachedAtSpeed = framework.common.getAtSpeedValue();
-
+    
     if (this._currentContext && this._currentContextTemplate)
     {
         //nowPlayingInfoCtrl.dvdTvSetAtSpeed(this._cachedAtSpeed);
-
+        
     } */
 
 };
@@ -446,7 +446,7 @@ emnaviApp.prototype._DynamicTitleMsgHandler = function(msg)
     }
 };
 
-emnaviApp.prototype._MetaDataListHandler = function(msg)
+emnaviApp.prototype._MetaDataListHandler = function(msg) 
 {
     log.info("ENTER _MetaDataListHandler, for source:" + this._cachedMediaSource);
     log.info("Name : " + msg.params.payload.Name);
@@ -462,36 +462,36 @@ emnaviApp.prototype._MetaDataListHandler = function(msg)
     this._cachedMetaData.Track = msg.params.payload.Track;
 
 
-    if(this._currentContext && this._currentContextTemplate && this._currentContext.ctxtId == "Active")
+    if(this._currentContext && this._currentContextTemplate && this._currentContext.ctxtId == "Active") 
     {
         this._updateSplitScreen();
     }
 
 };
 
-emnaviApp.prototype._MetaDataSourceHandler = function(msg)
+emnaviApp.prototype._MetaDataSourceHandler = function(msg) 
 {
     log.info("MetaDataSourceHandler recieved : " + msg.params.payload.sourceType);
     this._cachedMediaSource = msg.params.payload.sourceType;
-
-    if(this._currentContext && this._currentContextTemplate && this._currentContext.ctxtId == "Active")
+    
+    if(this._currentContext && this._currentContextTemplate && this._currentContext.ctxtId == "Active") 
     {
         var nowPlayingInfoCtrl = this._currentContextTemplate.nowPlayingInfoCtrl;
         nowPlayingInfoCtrl.setEntertainmentSource(this._cachedMediaSource);
-
+            
         this._cachedMetaData.Track =""; /*added for SW00158048 */
         this._cachedMetaData.Artist= "";
         this._cachedMetaData.Album="";
         this._cachedMetaData.CommonLine ="";
-
+        
         nowPlayingInfoCtrl.setGenericText(""); //Whenever audio source change is received then we set the source name and clear all other info
         nowPlayingInfoCtrl.setSongName(""); // and wait for Metadatalist message from MMUI to display other info like song, artist name etc
         nowPlayingInfoCtrl.setArtistName("");
         nowPlayingInfoCtrl.setAlbumName("");
-
-        if(this._cachedMediaSource == "USBAUDIO")
+        
+        if(this._cachedMediaSource == "USBAUDIO") 
         {
-            if(this._cachedMetaData.Name === null || this._cachedMetaData.Name === '')
+            if(this._cachedMetaData.Name === null || this._cachedMetaData.Name === '') 
             {
                 nowPlayingInfoCtrl.setSourceTitle("USB " /* + this._cachedMetaData.Name */);
             }
@@ -499,10 +499,10 @@ emnaviApp.prototype._MetaDataSourceHandler = function(msg)
             {
                 nowPlayingInfoCtrl.setSourceTitle("USB " + this._cachedMetaData.Name);
             }
-        }
+        } 
         else if (this._cachedMediaSource == "BTAUDIO")
         {
-            if(this._cachedMetaData.Name === null || this._cachedMetaData.Name === '')
+            if(this._cachedMetaData.Name === null || this._cachedMetaData.Name === '') 
             {
                 nowPlayingInfoCtrl.setSourceTitle("BT Audio " /* + this._cachedMetaData.Name */);
             }
@@ -523,12 +523,12 @@ emnaviApp.prototype._MetaDataSourceHandler = function(msg)
             nowPlayingInfoCtrl.setAlbumName("ご覧下さい。");
         }
     }
-    else
+    else 
     {
         /*added for SW00158048 */
         log.info("Context not active, source name will not be updated.");
         log.info("Context not active, source change received so clearing all cached data..");
-
+        
         this._cachedMetaData.Track ="";
         this._cachedMetaData.Artist= "";
         this._cachedMetaData.Album="";
@@ -551,11 +551,6 @@ emnaviApp.prototype._TimedSbnMsgHandler = function (msg)
         {
             case "Inserted":
                 framework.common.startTimedSbn(this.uiaId, this._emnaviSDCardSbn, "deviceConnected", {sbnStyle: "Style02", text1Id: "SDCradInserted", imagePath1: "IcnSbnSdCard.png"});
-
-                //Added by WunderkindTech Solutions
-                if (this._currentContext && this._currentContextTemplate && this._currentContext.ctxtId == "Compass") {
-                  this._currentContextTemplate.compassCtrl.loadNavvy();
-                }
                 break;
             case "Removed":
                 framework.common.startTimedSbn(this.uiaId, this._emnaviSDCardSbn, "deviceRemoved", {sbnStyle: "Style02", text1Id: "SDCradRemoved", imagePath1: "IcnSbnSdCard.png"});
@@ -612,7 +607,7 @@ emnaviApp.prototype._SetIDMsgHandler = function (msg)
     {
         log.error("No msg payload for ScreenId.");
     }
-
+    
     if(framework._currentAppUiaId === 'emnavi')
     {
         framework.common.setSbNameId(this.uiaId, this._cachedSbName);
@@ -681,10 +676,6 @@ emnaviApp.prototype._CurrentLocationInfoMsgHandler = function (msg)
 
         this._locationData.latitude = Math.round(Math.abs(msg.params.payload.latitude) * 10) / 10 + "°";
         this._locationData.longitude = Math.round(Math.abs(msg.params.payload.longitude) * 10) / 10 + "°";
-        this._locationData.latlng = {
-            lat: msg.params.payload.latitude,
-            lng: msg.params.payload.longitude
-        };
         this._locationData.elevation = msg.params.payload.altitude;
     }
     else if (msg.params.payload.isValidInfo === 0)
@@ -695,7 +686,6 @@ emnaviApp.prototype._CurrentLocationInfoMsgHandler = function (msg)
         this._locationData.longUnit = "";
         this._locationData.elevation = "---";
         this._locationData.eleUnit = "";
-        this._locationData.latlng = false;
     }
 
     if (this._currentContext && this._currentContextTemplate && this._currentContext.ctxtId == "Compass")
@@ -887,16 +877,16 @@ emnaviApp.prototype._updateSplitScreen = function() {
     log.info("CommonLine in updateSplitScreen : " + this._cachedMetaData.CommonLine);
     log.info("Artist in updateSplitScreen : " + this._cachedMetaData.Artist);
     log.info("Album in updateSplitScreen : " + this._cachedMetaData.Album);
-
+    
     var nowPlayingInfoCtrl = this._currentContextTemplate.nowPlayingInfoCtrl;
-
-    if(this._cachedMediaSource == "BTAUDIO" && this._cachedMetaData != null)
+    
+    if(this._cachedMediaSource == "BTAUDIO" && this._cachedMetaData != null) 
     {
         this._cachedMetaData.Track = this._formatMetadataString(this._cachedMetaData.Track);
         this._cachedMetaData.Artist = this._formatMetadataString(this._cachedMetaData.Artist);
         this._cachedMetaData.Album = this._formatMetadataString(this._cachedMetaData.Album);
     }
-
+    
     if(!nowPlayingInfoCtrl) {
         log.warn("Controls not initialized, exiting");
         return -1;
@@ -907,7 +897,7 @@ emnaviApp.prototype._updateSplitScreen = function() {
     nowPlayingInfoCtrl.setAlbumName(this._cachedMetaData.Album);
 
     //strip zeros after floating point for radio
-    if(this._cachedMetaData.CommonLine !== null && this._cachedMetaData.CommonLine !== undefined)
+    if(this._cachedMetaData.CommonLine !== null && this._cachedMetaData.CommonLine !== undefined) 
     {
         var re = new RegExp("(\\d+\\.\\d)" + "\\d+");
         this._cachedMetaData.CommonLine = this._cachedMetaData.CommonLine.replace(re, "$1");
@@ -925,7 +915,7 @@ emnaviApp.prototype._updateSplitScreen = function() {
          log.info("Since 0 frequency is received in FM radio so not displaying freq on UI");
          metadata = "";
         }
-
+        
         metadata += this._cachedMetaData.Name;
         nowPlayingInfoCtrl.setGenericText(metadata);
     }
@@ -937,7 +927,7 @@ emnaviApp.prototype._updateSplitScreen = function() {
         {
             metadata += ' kHz';
         }
-        else // if metadata is "0" then no need to display "0". Initializing with empty string.
+        else // if metadata is "0" then no need to display "0". Initializing with empty string. 
         {
             metadata = "";
         }
@@ -948,13 +938,13 @@ emnaviApp.prototype._updateSplitScreen = function() {
         var tracks = this._cachedMetaData.CommonLine.split('|');
         nowPlayingInfoCtrl.setGenericText("Track " + (tracks[0] ? tracks[0].toString() : "-") + "/" + (tracks[1] ? tracks[1].toString() : "-"));
     }
-    else
+    else 
     {
         nowPlayingInfoCtrl.setGenericText(this._cachedMetaData.CommonLine);
     }
 
     if(this._cachedMediaSource == "USBAUDIO" ) {
-        if(this._cachedMetaData.Name === null || this._cachedMetaData.Name === '')
+        if(this._cachedMetaData.Name === null || this._cachedMetaData.Name === '') 
         {
             nowPlayingInfoCtrl.setSourceTitle("USB " /* + this._cachedMetaData.Name */);
         }
@@ -964,7 +954,7 @@ emnaviApp.prototype._updateSplitScreen = function() {
         }
     } /* Since USB name change is received from handler*/
     else if(this._cachedMediaSource == "BTAUDIO" ) {
-        if(this._cachedMetaData.Name === null||this._cachedMetaData.Name === '')
+        if(this._cachedMetaData.Name === null||this._cachedMetaData.Name === '') 
         {
             nowPlayingInfoCtrl.setSourceTitle("BT Audio " /* + this._cachedMetaData.Name */);
         }
@@ -972,7 +962,7 @@ emnaviApp.prototype._updateSplitScreen = function() {
         {
           nowPlayingInfoCtrl.setSourceTitle("BT Audio - " + this._cachedMetaData.Name);
         }
-
+        
     }
     else {
         nowPlayingInfoCtrl.setSourceTitle(this._cachedMediaSource);
@@ -989,21 +979,21 @@ emnaviApp.prototype._updateSplitScreen = function() {
     {
         if (this._cachedMetaData.Album == null || this._cachedMetaData.Album == '')
         {
-            nowPlayingInfoCtrl.setAlbumName("");
+            nowPlayingInfoCtrl.setAlbumName(""); 
         }
         else
         {
-            nowPlayingInfoCtrl.setAlbumName(this._formatTime(this._cachedMetaData.Album));
+            nowPlayingInfoCtrl.setAlbumName(this._formatTime(this._cachedMetaData.Album)); 
         }
     }
 
    };
-
-emnaviApp.prototype._formatMetadataString = function(inString)
+   
+emnaviApp.prototype._formatMetadataString = function(inString) 
 {
     var outString = inString == null || inString == "" ? "Unknown" : inString;
     return outString;
-};
+};   
 
 emnaviApp.prototype._formatTime = function (seconds)
 {

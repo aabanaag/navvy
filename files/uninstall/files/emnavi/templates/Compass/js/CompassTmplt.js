@@ -39,9 +39,9 @@ function CompassTmplt(uiaId, parentDiv, templateID, controlProperties)
     //@formatter:off
     //set the template properties
     this.properties = {
-        "statusBarVisible" : false,
-        "leftButtonVisible" : false,
-        "rightChromeVisible" : false,
+        "statusBarVisible" : true,
+        "leftButtonVisible" : true,
+		"rightChromeVisible" : true,
         "hasActivePanel" : false,
         "isDialog" : false,
     }
@@ -50,7 +50,7 @@ function CompassTmplt(uiaId, parentDiv, templateID, controlProperties)
     // create the div for template
     this.divElt = document.createElement('div');
     this.divElt.id = templateID;
-    this.divElt.className = "TemplateFull CompassTmplt";
+    this.divElt.className = "TemplateWithStatusLeft CompassTmplt";
 
 
     parentDiv.appendChild(this.divElt);
