@@ -10,10 +10,6 @@ function NavvyCtrl (uiaId, parentDiv, ctrlId, properties) {
       MIN_ZOOM: 16,
       MAX_ZOOM: 18,
       DEFAULT_ZOOM: 17,
-      mapUrl: 'http://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=',
-      geoUrl: 'http://www.mapquestapi.com/sdk/leaflet/v2.s/mq-geocoding.js?key=',
-      routingUrl: 'https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-routing.js?key=',
-      osrm_url: 'https://router.project-osrm.org/',
       key: '7sp7uN2HZY7IjMHMlaIwjhIHoGGPao4P'
     },
     networkTest: 'http://mazda-twitter-api.herokuapp.com/ping',
@@ -77,22 +73,6 @@ NavvyCtrl.prototype._loadPlugins = function () {
     this._map.panTo(this.currCoords, this._map.getZoom());
   }.bind(this);
   document.body.appendChild(animatedMarker);
-};
-
-NavvyCtrl.prototype._loadSearchPlugin = function () {
-  // geocoding
-  var geocoding = document.createElement('script');
-  geocoding.src = this.properties.map.geoUrl + this.properties.map.key;
-  geocoding.onload = function (argument) {
-    this.geocode = MQ.geocode();
-    this.geocode.on('success', this._geocodeSuccess.bind(this));
-  }.bind(this);
-  document.body.appendChild(geocoding);
-
-  //routing
-  var routing = document.createElement('script');
-  routing.src = this.properties.map.routingUrl + this.properties.map.key;
-  document.body.appendChild(routing);
 };
 
 NavvyCtrl.prototype._createContainer = function () {
@@ -178,6 +158,8 @@ NavvyCtrl.prototype.init = function () {
 
   this._loadMap(function () {
     this._createMenus();
+    this._createSearchControl();
+    this._loadKeyboard();
 
     this._createMap(function () {
       this._loadPlugins();
@@ -203,21 +185,7 @@ NavvyCtrl.prototype._loadMap = function (cb) {
   script.type = 'text/javascript';
   script.src = this._PATH + 'js/leaflet.js';
   script.onload = function () {
-    if (this.properties.noConnectivity) cb();
-    else {
-      var mq = document.createElement('script');
-      mq.type = 'text/javascript';
-      mq.src = this.properties.map.mapUrl + this.properties.map.key;
-      mq.onload = function () {
-        this._createSearchControl();
-        this._loadKeyboard();
-        this._loadSearchPlugin();
-
-        cb();
-      }.bind(this);
-
-      this.parentDiv.appendChild(mq);
-    }
+    cb();
   }.bind(this);
 
   this.parentDiv.appendChild(script);
@@ -242,13 +210,7 @@ NavvyCtrl.prototype._createMap = function (cb) {
 };
 
 NavvyCtrl.prototype._createLayer = function () {
-  //this._checkConnectivity();
-
-  if (this.properties.noConnectivity) {
-    return L.tileLayer(this.properties.tiles + '/{z}/{x}/{y}.png');
-  } else {
-    return MQ.mapLayer();
-  }
+  return L.tileLayer(this.properties.tiles + '/{z}/{x}/{y}.png');
 }
 
 NavvyCtrl.prototype._createPin = function () {
@@ -271,67 +233,12 @@ NavvyCtrl.prototype._createMarker = function (lat, lng) {
 };
 
 NavvyCtrl.prototype._updateMarker = function (lat, lng) {
-  if (this.polyLineString && this.bearingPoints && this.hasInstructions) {
-    if (this._snappedToRoad) {
+  this.currCoords.lat = lat;
+  this.currCoords.lng = lng;
 
-      var intersect = this._checkPolyIntersect({ lat: lat, lng: lng });
-
-      if (intersect) {
-        var distance = this._getDistance(this.currCoords, { lat: lat, lng: lng });
-        this.currCoords = {
-          lat: lat,
-          lng: lng
-        }
-        this.distanceTraveled += distance;
-        var along = turf.along(this.lineString, this.distanceTraveled, 'kilometers');
-        var result = {
-          "type": "FeatureCollection",
-          "features": [this.lineString, along]
-        };
-
-        if (this.bearingPoints[this.bearingIndex + 1]) {
-          var pointIntersect = this._checkPointIntersect(this.currCoords, this.bearingPoints[this.bearingIndex + 1].point);
-          if (pointIntersect) {
-            this.bearingIndex += 1;
-          }
-        }
-
-        var point = result.features[1].geometry.coordinates;
-        this._marker.setLatLng({ lat: point[1], lng: point[0] });
-        //this._marker._icon.style.transform = this._marker._icon.style.transform + 'rotate(' + this.bearingPoints[this.bearingIndex].ang + 'deg)';
-        if (this.properties.map.moveWithGPS) this._centerMap(this.currCoords.lat, this.currCoords.lng);
-      } else {
-        this.currCoords = {
-          lat: lat,
-          lng: lng
-        }
-
-        if (this.recalculateBuffer >= 2) {
-          this._removeRouting();
-          this._recalculateRoute();
-        } else {
-          this.recalculateBuffer += 1;
-        }
-
-        this._marker.setLatLng(this.currCoords);
-        if (this.properties.map.moveWithGPS) this._centerMap(this.currCoords.lat, this.currCoords.lng);
-      }
-    } else {
-      this._getPathBetweenPoints({ lat: lat, lng: lng }, function (e) {
-        var coords = L.latLng(this.currCoords.lat, this.currCoords.lng);
-        this._marker.setLatLng(coords);
-        if (this.properties.map.moveWithGPS) this._centerMap(this.currCoords.lat, this.currCoords.lng);
-        this._snappedToRoad = true;
-      }.bind(this));
-    }
-  } else {
-    this.currCoords.lat = lat;
-    this.currCoords.lng = lng;
-
-    var coords = L.latLng(lat, lng);
-    this._marker.setLatLng(coords);
-    if (this.properties.map.moveWithGPS) this._centerMap(this.currCoords.lat, this.currCoords.lng);
-  }
+  var coords = L.latLng(lat, lng);
+  this._marker.setLatLng(coords);
+  if (this.properties.map.moveWithGPS) this._centerMap(this.currCoords.lat, this.currCoords.lng);
 };
 
 NavvyCtrl.prototype._centerMap = function (lat, lng) {
@@ -366,20 +273,6 @@ NavvyCtrl.prototype._checkLocation = function (lat, lng) {
     this.ctrlDiv.appendChild(tempDebug);
   }
 };
-
-NavvyCtrl.prototype._checkConnectivity = function () {
-  var el = document.getElementById('tempDebug');
-
-  if (el) el.innerHTML = (this.properties.noConnectivity) ? 'No Internet' : 'Internet';
-  else {
-    var tempDebug = document.createElement('span');
-    tempDebug.id = 'tempDebug';
-    tempDebug.style = 'position:absolute; left: 10px; top:80px; color:red;';
-    tempDebug.innerHTML = (this.properties.noConnectivity) ? 'No Internet' : 'Internet';
-
-    this.ctrlDiv.appendChild(tempDebug);
-  }
-}
 
 NavvyCtrl.prototype._moveMap = function (ev) {
   var offsetX = 1, offsetY = 1;
@@ -427,7 +320,9 @@ NavvyCtrl.prototype._zoomOut = function () {
 
 NavvyCtrl.prototype._searchLocation = function () {
   var address = this.searchInput.value + ' philippines';
-  this.geocode.search(address);
+  // TODO
+  // geocoding application
+  console.log(address);
 };
 
 NavvyCtrl.prototype._createSearchResults = function (matches) {
@@ -459,13 +354,11 @@ NavvyCtrl.prototype._createSearchResults = function (matches) {
       this.searchInput.value = '';
 
       this._toggleSearchContainer(false);
-      this._routeToDestination(data);
     }.bind(this));
 
     li.appendChild(goToButton);
     this.searchList.appendChild(li);
   }
-  //this._routeToDestination(matches[0]);
 };
 
 NavvyCtrl.prototype._routeToDestination = function (data) {
@@ -474,97 +367,69 @@ NavvyCtrl.prototype._routeToDestination = function (data) {
     this._removeRouting();
   }
 
-  var dir = MQ.routing.directions();
+  // TODO
+  //implement map routing with polyline
+  //must call fn._addRouteInstructions for route instructions creation
 
-  dir.on('success', this._addRouteInstructions.bind(this));
-
-  dir.route({
-    locations: [
-      { latLng: { lat: this.currCoords.lat, lng: this.currCoords.lng } },
-      { latLng: { lat: data.latlng.lat, lng: data.latlng.lng } }
-    ]
-  });
-
-  this.routingLayer = MQ.routing.routeLayer({
-    directions: dir,
-    ribbonOptions: {
-      draggable: false,
-      ribbonDisplay: { color: '#5A9BC3', opacity: 0.9 }
-    }
-  });
-
-  this._map.addLayer(this.routingLayer);
   this.hasInstructions = true;
 };
 
 NavvyCtrl.prototype._addRouteInstructions = function (data) {
   this.recalculateBuffer = 0; //if 2 must recalculate route
 
-  data.route.shape.shapePoints.unshift(this.currCoords);
-  var shapePoints = data.route.shape.shapePoints.map(function (obj) {
-    return [obj.lng, obj.lat]
-  });
-  this.routeStart = this.currCoords;
-  this.distanceTraveled = 0;
-  this.lineString = {
-    "type": "Feature",
-    "properties": {},
-    "geometry": {
-      "type": "LineString",
-      "coordinates": shapePoints
-    }
-  };
-
   var container = document.createElement('div');
   container.className = 'navvyCtrlInstructions';
 
-  var legs = data.route.legs,
-    html = '',
-    maneuvers,
-    i;
+  // TODO
+  //implement route instructions creation
 
-  if (legs && legs.length) {
-    maneuvers = legs[0].maneuvers;
-    this.bearingPoints = [];
-    this.bearingIndex = 0;
+  // var legs = data.route.legs,
+  //   html = '',
+  //   maneuvers,
+  //   i;
+  //
+  // if (legs && legs.length) {
+  //
+  //   for (i=0; i < maneuvers.length; i++) {
+  //     html += '<div><img src="' + maneuvers[i].iconUrl + '" />' + maneuvers[i].narrative + '</div>';
+  //   }
+  //
+  //   container.innerHTML = html;
+  //   this.routeInstructions.appendChild(container);
+  //   this._toggleSearchOptions();
+  // }
+};
 
-    var bearing = this._getBearing(this.currCoords, maneuvers[0].startPoint);
-    this.bearingPoints.push({ ang: bearing });
-
-    for (i=0; i < maneuvers.length; i++) {
-      html += '<div><img src="' + maneuvers[i].iconUrl + '" />' + maneuvers[i].narrative + '</div>';
-      if (maneuvers[i]) {
-        var bearing = undefined;
-        if (maneuvers[i+1]) bearing = this._getBearing(maneuvers[i].startPoint, maneuvers[i+1].startPoint);
-
-        this.bearingPoints.push({
-          point: maneuvers[i].startPoint,
-          ang: bearing
-        });
-      }
-    }
-
-    this._setMapBearing(this.bearingPoints[0].ang);
-
-    container.innerHTML = html;
-    this.routeInstructions.appendChild(container);
-    //this._offsetCenter(this.currCoords, -100, 0);
-    this._toggleSearchOptions();
-
-    var lineString = data.route.shape.shapePoints;
-    this.polyLineString = lineString.map(function (obj) {
-      return [obj.lat, obj.lng];
-    }.bind(this));
-
+NavvyCtrl.prototype._toggleSearchOptions = function (argument) {
+  if (this.searchButton.style.display == 'none') {
+    this.searchButton.style.display = 'block';
+    this.cancelButton.style.display = 'none';
+  } else {
+    this.searchButton.style.display = 'none';
+    this.cancelButton.style.display = 'block';
   }
 };
 
-NavvyCtrl.prototype._recalculateRoute = function () {
-  this._routeToDestination(this.routeData);
+NavvyCtrl.prototype._removeRouting = function () {
+  this._map.removeLayer(this.routingLayer);
+  this.routeInstructions.innerHTML = '';
+  this.polyLineString = this.bearingPoints = this.hasInstructions = this.routingLayer = undefined;
+  this._toggleSearchOptions();
 };
 
-NavvyCtrl.prototype._setMapBearing = function (bearing) {
-  //this._marker._icon.style.transform = this._marker._icon.style.transform + 'rotate(' + bearing + 'deg)';
+// helpers
+NavvyCtrl.prototype._getBearing = function (latLng1, latLng2) {
+  var d2r  = L.LatLng.DEG_TO_RAD;
+  var r2d  = L.LatLng.RAD_TO_DEG;
+  var lat1 = latLng1.lat * d2r;
+  var lat2 = latLng2.lat * d2r;
+  var dLon = (latLng2.lng-latLng1.lng) * d2r;
+  var y    = Math.sin(dLon) * Math.cos(lat2);
+  var x    = Math.cos(lat1)*Math.sin(lat2) - Math.sin(lat1)*Math.cos(lat2)*Math.cos(dLon);
+  var brng = Math.atan2(y, x);
+  brng = parseInt( brng * r2d );
+  brng = (brng + 360) % 360;
+  return brng;
 };
 
 NavvyCtrl.prototype._getDistance = function (coor1, coor2, unit) {
@@ -608,34 +473,41 @@ NavvyCtrl.prototype._checkPointIntersect = function (pt1, pt2) {
 
   return intersection;
 };
+//helpers end
 
-NavvyCtrl.prototype._getBearing = function (latLng1, latLng2) {
-  var d2r  = L.LatLng.DEG_TO_RAD;
-  var r2d  = L.LatLng.RAD_TO_DEG;
-  var lat1 = latLng1.lat * d2r;
-  var lat2 = latLng2.lat * d2r;
-  var dLon = (latLng2.lng-latLng1.lng) * d2r;
-  var y    = Math.sin(dLon) * Math.cos(lat2);
-  var x    = Math.cos(lat1)*Math.sin(lat2) - Math.sin(lat1)*Math.cos(lat2)*Math.cos(dLon);
-  var brng = Math.atan2(y, x);
-  brng = parseInt( brng * r2d );
-  brng = (brng + 360) % 360;
-  return brng;
-};
+//events
+NavvyCtrl.prototype._home = function () {
+  //framework.sendEventToMmui('Common', 'Global.IntentHome');
+  var self = this;
 
-NavvyCtrl.prototype._getPathBetweenPoints = function (data, callback) {
   var xhr = new XMLHttpRequest();
-  var url = this.properties.map.osrm_url + 'nearest?loc=' + data.lat + ',' + data.lng;
-  xhr.open('GET',  url, false);
+  xhr.open('GET', 'file://localhost/home/abetmiclat/Documents/Projects/navvy-online/controls/Map/js/test-data.json', false);
+  xhr.timeout = 30000;
   xhr.onload = function() {
     var status = xhr.status;
-    if (status == 200) {
+    if (status == 0) {
       var response = JSON.parse(xhr.response);
-      this.currCoords = {
-        lat: response.mapped_coordinate[0],
-        lng: response.mapped_coordinate[1]
+
+      function geolocate () {
+        var coordinate = response.shift();
+        if (!coordinate) return;
+
+        var data = {
+          latlng: {
+            lat: coordinate.lat,
+            lng: coordinate.lon
+          }
+        }
+
+        self.showLocation(data);
+
+        setTimeout(function () {
+          geolocate();
+        }, 1000);
       }
-      callback(response);
+
+      geolocate();
+
     } else {
       console.log(status);
     }
@@ -644,70 +516,6 @@ NavvyCtrl.prototype._getPathBetweenPoints = function (data, callback) {
     var status = xhr.status;
   }
   xhr.send();
-};
-
-NavvyCtrl.prototype._toggleSearchOptions = function (argument) {
-  if (this.searchButton.style.display == 'none') {
-    this.searchButton.style.display = 'block';
-    this.cancelButton.style.display = 'none';
-  } else {
-    this.searchButton.style.display = 'none';
-    this.cancelButton.style.display = 'block';
-  }
-};
-
-NavvyCtrl.prototype._removeRouting = function () {
-  this._map.removeLayer(this.routingLayer);
-  this.routeInstructions.innerHTML = '';
-  this.polyLineString = this.bearingPoints = this.hasInstructions = this.routingLayer = undefined;
-  this._toggleSearchOptions();
-};
-
-//event functions
-NavvyCtrl.prototype._geocodeSuccess = function (res) {
-  this._createSearchResults(res.result.matches);
-};
-
-NavvyCtrl.prototype._home = function () {
-  framework.sendEventToMmui('Common', 'Global.IntentHome');
-  // var self = this;
-  //
-  // var xhr = new XMLHttpRequest();
-  // xhr.open('GET', 'file://localhost/home/abetmiclat/Documents/Projects/navvy-online/controls/Map/js/test-data.json', false);
-  // xhr.timeout = 30000;
-  // xhr.onload = function() {
-  //   var status = xhr.status;
-  //   if (status == 0) {
-  //     var response = JSON.parse(xhr.response);
-  //
-  //     function geolocate () {
-  //       var coordinate = response.shift();
-  //       if (!coordinate) return;
-  //
-  //       var data = {
-  //         latlng: {
-  //           lat: coordinate.lat,
-  //           lng: coordinate.lon
-  //         }
-  //       }
-  //
-  //       self.showLocation(data);
-  //
-  //       setTimeout(function () {
-  //         geolocate();
-  //       }, 1000);
-  //     }
-  //
-  //     geolocate();
-  //
-  //   } else {
-  //     console.log(status);
-  //   }
-  // }.bind(this);
-  // xhr.onerror = function() {
-  //   var status = xhr.status;
-  // }
-  // xhr.send();
 };
 
 NavvyCtrl.prototype._search = function () {
@@ -733,7 +541,7 @@ NavvyCtrl.prototype._toggleSearchContainer = function (isShown) {
     this.searchControlHidden = true;
   }
 };
-//end
+//events end
 
 NavvyCtrl.prototype.handleControllerEvent = function (e) {
   switch (e) {
