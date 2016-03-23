@@ -477,45 +477,45 @@ NavvyCtrl.prototype._checkPointIntersect = function (pt1, pt2) {
 
 //events
 NavvyCtrl.prototype._home = function () {
-  //framework.sendEventToMmui('Common', 'Global.IntentHome');
-  var self = this;
-
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'file://localhost/home/abetmiclat/Documents/Projects/navvy-online/controls/Map/js/test-data.json', false);
-  xhr.timeout = 30000;
-  xhr.onload = function() {
-    var status = xhr.status;
-    if (status == 0) {
-      var response = JSON.parse(xhr.response);
-
-      function geolocate () {
-        var coordinate = response.shift();
-        if (!coordinate) return;
-
-        var data = {
-          latlng: {
-            lat: coordinate.lat,
-            lng: coordinate.lon
-          }
-        }
-
-        self.showLocation(data);
-
-        setTimeout(function () {
-          geolocate();
-        }, 1000);
-      }
-
-      geolocate();
-
-    } else {
-      console.log(status);
-    }
-  }.bind(this);
-  xhr.onerror = function() {
-    var status = xhr.status;
-  }
-  xhr.send();
+  framework.sendEventToMmui('Common', 'Global.IntentHome');
+  // var self = this;
+  //
+  // var xhr = new XMLHttpRequest();
+  // xhr.open('GET', 'file://localhost/home/abetmiclat/Documents/Projects/navvy-online/controls/Map/js/test-data.json', false);
+  // xhr.timeout = 30000;
+  // xhr.onload = function() {
+  //   var status = xhr.status;
+  //   if (status == 0) {
+  //     var response = JSON.parse(xhr.response);
+  //
+  //     function geolocate () {
+  //       var coordinate = response.shift();
+  //       if (!coordinate) return;
+  //
+  //       var data = {
+  //         latlng: {
+  //           lat: coordinate.lat,
+  //           lng: coordinate.lon
+  //         }
+  //       }
+  //
+  //       self.showLocation(data);
+  //
+  //       setTimeout(function () {
+  //         geolocate();
+  //       }, 1000);
+  //     }
+  //
+  //     geolocate();
+  //
+  //   } else {
+  //     console.log(status);
+  //   }
+  // }.bind(this);
+  // xhr.onerror = function() {
+  //   var status = xhr.status;
+  // }
+  // xhr.send();
 };
 
 NavvyCtrl.prototype._search = function () {

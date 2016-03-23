@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# v0.2
+# v0.3
 # Mazda Philippines
 # Creator: WunderkindTech Solutions
 # Date Modified: 03/11/2016
@@ -11,6 +11,7 @@
 # CHANGELOG:
 # 3/11/16 - Initial
 # 3/14/16 - Add deleted controls&templates [Fix for Emnavi Navteq bug]
+# 3/23/16 - Remove fps.js
 
 # ALLOW READ | WRITE COMMANDS
 mount -o rw,remount /
@@ -40,6 +41,12 @@ if [ ! -f $opera ]; then
   fi
 fi
 
+# Check if fps.js.bak and stage_wifi.sh.bak exist if not then proceed with backup
+fps='/jci/opera/opera_dir/userjs/fps.js.bak'
+if [ ! -f $fps ]; then
+  mv /jci/opera/opera_dir/userjs/fps.js /jci/opera/opera_dir/userjs/fps.js.bak
+fi
+
 emnavi='/jci/gui/apps/emnavi.bak'
 if [ ! -f $emnavi ]; then
   mv /jci/gui/apps/emnavi /jci/gui/apps/emnavi.bak
@@ -62,4 +69,4 @@ ln -s /tmp/mnt/sd_nav/ /jci/gui/apps/emnavi/controls/Compass/resources
 
 chmod 755 /jci/gui/apps/emnavi/controls/Compass/resources/*
 
-/jci/tools/jci-dialog --title="Mazda Philippines" --text="Navvy v0.1 Install Complete" --ok-label='OK' --no-cancel &
+/jci/tools/jci-dialog --title="Mazda Philippines" --text="Navvy v0.3 Install Complete" --ok-label='OK' --no-cancel &
