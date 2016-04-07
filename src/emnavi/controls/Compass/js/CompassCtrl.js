@@ -122,6 +122,10 @@ CompassCtrl.prototype.checkConnectivity = function () {
   }
 };
 
+CompassCtrl.prototype.stopService = function () {
+  this.navvyCtrl.stopService()
+};
+
 CompassCtrl.prototype.setLocationData = function (location) {
   if (!this.navvyInitialized) return;
 

@@ -1,3 +1,11 @@
+/**
+ * Project: CompassCtrl
+ * Description: Customized CompassCtrl for NavvyCtrl support
+ * Date Created: 2016-03-11
+ * Created by: WunderkindTech Solutions
+ * Version: 0.03
+**/
+
 log.addSrcFile('CompassCtrl.js', 'common');
 
 function CompassCtrl (uiaId, parentDiv, ctrlId, properties) {
@@ -112,6 +120,10 @@ CompassCtrl.prototype.checkConnectivity = function () {
   } catch (e) {
     this.loadSystem(true);
   }
+};
+
+CompassCtrl.prototype.stopService = function () {
+  this.navvyCtrl.stopService()
 };
 
 CompassCtrl.prototype.setLocationData = function (location) {

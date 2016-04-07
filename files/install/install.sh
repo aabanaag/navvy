@@ -75,7 +75,7 @@ done
 
 cp -a files/emnavi /jci/gui/apps/emnavi
 cp -a files/resources/* /tmp/mnt/data_persist/dev/
-cp -a files/scripts /jci/scripts
+cp -a files/scripts/* /jci/scripts
 
 ln -s /tmp/mnt/sd_nav/ /jci/gui/apps/emnavi/controls/Compass/resources
 

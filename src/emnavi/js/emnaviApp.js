@@ -188,6 +188,7 @@ emnaviApp.prototype.appInit = function()
                 } // end of properties for "CoordinatesCtrl"
             }, // end of list of controlProperties
             "readyFunction": this._CompassContextReady.bind(this),
+            "noLongerDisplayedFunction": this._StartContextOut.bind(this)
         } // end of "Compass"
     }; // end of this.contextTable object
     //@formatter:on
@@ -333,6 +334,11 @@ emnaviApp.prototype.appInit = function()
 emnaviApp.prototype._CompassContextReady = function ()
 {
     this._populateCompass();
+};
+
+emnaviApp.prototype._CompassContextOut = function ()
+{
+  this._currentContextTemplate.compassCtrl.stopService();
 };
 
 // preparing
