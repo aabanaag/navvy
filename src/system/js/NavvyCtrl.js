@@ -1,3 +1,11 @@
+/**
+ * Project: NavvyCtrl
+ * Description: Offline map Control for emnavi
+ * Date Created: 2016-03-11
+ * Created by: WunderkindTech Solutions
+ * Version: 0.03
+**/
+
 function NavvyCtrl (uiaId, parentDiv, ctrlId, properties) {
   this.id = ctrlId;
   this.parentDiv = parentDiv;
