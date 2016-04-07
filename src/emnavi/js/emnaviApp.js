@@ -713,6 +713,7 @@ emnaviApp.prototype._CurrentLocationInfoMsgHandler = function (msg)
  */
 emnaviApp.prototype._populateCompass = function ()
 {
+  this._currentContextTemplate.compassCtrl.startService();
   this._currentContextTemplate.compassCtrl.setLocationData(this._locationData);
 };
 

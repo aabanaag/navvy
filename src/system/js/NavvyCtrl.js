@@ -10,7 +10,6 @@ function NavvyCtrl (uiaId, parentDiv, ctrlId, properties) {
   this.id = ctrlId;
   this.parentDiv = parentDiv;
   this.uiaId = uiaId;
-  this.ws = null;
 
   this.properties = {
     isDebug: true,
@@ -82,19 +81,6 @@ NavvyCtrl.prototype._loadPlugins = function () {
     this._map.panTo(this.currCoords, this._map.getZoom());
   }.bind(this);
   document.body.appendChild(animatedMarker);
-};
-
-NavvyCtrl.prototype._runService = function () {
-  this.ws = new WebSocket('ws://localhost:9999/');
-
-  this.ws.onopen = function () {
-    this.ws.send('./jci/scripts/navvy_routed.sh');
-  }.bind(this);
-};
-
-NavvyCtrl.prototype.stopService = function () {
-  this.ws.send('fuser -k 5001/tcp');
-  this.ws.close();
 };
 
 NavvyCtrl.prototype._createContainer = function () {
