@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# v0.3
+# v0.4
 # Mazda Philippines
 # Creator: WunderkindTech Solutions
 # Date Modified: 03/11/2016
@@ -12,6 +12,7 @@
 # 3/11/16 - Initial
 # 3/14/16 - Add deleted controls&templates [Fix for Emnavi Navteq bug]
 # 3/23/16 - Remove fps.js
+# 4/07/16 - Add OSRM-Backend service
 
 # ALLOW READ | WRITE COMMANDS
 mount -o rw,remount /
@@ -52,6 +53,15 @@ if [ ! -f $emnavi ]; then
   mv /jci/gui/apps/emnavi /jci/gui/apps/emnavi.bak
 fi
 
+stage_wifi='/jci/scripts/stage_wifi.sh.bak'
+navvy_route='/jci/scripts/navvy_route.sh.bak'
+navvy_extract='/jci/scripts/navvy_extract.sh.bak'
+if [ ! -f $stage_wifi ] && [ ! -f $navvy_route ] && [ ! -f $navvy_extract ]; then
+  mv /jci/scripts/stage_wifi.sh /jci/scripts/stage_wifi.sh.bak
+  mv /jci/scripts/navvy_route.sh /jci/scripts/navvy_route.sh.bak
+  mv /jci/scripts/navvy_extract.sh /jci/scripts/navvy_extract.sh.bak
+fi
+
 for USB in a b c d e
 do
 	INSTALLSH=/tmp/mnt/sd${USB}1
@@ -64,9 +74,13 @@ done
 
 
 cp -a files/emnavi /jci/gui/apps/emnavi
+cp -a files/resources/* /tmp/mnt/data_persist/dev/
+cp -a files/scripts /jci/scripts
 
 ln -s /tmp/mnt/sd_nav/ /jci/gui/apps/emnavi/controls/Compass/resources
 
 chmod 755 /jci/gui/apps/emnavi/controls/Compass/resources/*
+chmod 755 /tmp/mnt/data_persist/dev/navvy/bin/websocketd
+chmod 755 /tmp/mnt/data_persist/dev/navvy/osrm
 
-/jci/tools/jci-dialog --title="Mazda Philippines" --text="Navvy v0.3 Install Complete" --ok-label='OK' --no-cancel &
+/jci/tools/jci-dialog --title="Mazda Philippines" --text="Navvy v0.4 Install Complete" --ok-label='OK' --no-cancel &
