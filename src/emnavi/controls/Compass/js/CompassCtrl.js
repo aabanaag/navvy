@@ -3,7 +3,7 @@
  * Description: Customized CompassCtrl for NavvyCtrl support
  * Date Created: 2016-03-11
  * Created by: WunderkindTech Solutions
- * Version: 0.03
+ * Version: 0.04
 **/
 
 log.addSrcFile('CompassCtrl.js', 'common');

@@ -15,6 +15,7 @@ function CompassCtrl (uiaId, parentDiv, ctrlId, properties) {
   this.navvyDisplayed = false;
   this.navvyInitialized = false;
   this.navvyCtrl = false;
+  this.ws = null;
 
   this.retryCount = 0;
   this.maxRetry = 10;
@@ -122,8 +123,17 @@ CompassCtrl.prototype.checkConnectivity = function () {
   }
 };
 
+CompassCtrl.prototype.startService = function () {
+  this.ws = new WebSocket('ws://localhost:9999/');
+
+  this.ws.onopen = function () {
+    this.ws.send('./jci/scripts/navvy_routed.sh');
+  }.bind(this);
+};
+
 CompassCtrl.prototype.stopService = function () {
-  this.navvyCtrl.stopService()
+  this.ws.send('fuser -k 5001/tcp');
+  this.ws.close();
 };
 
 CompassCtrl.prototype.setLocationData = function (location) {
